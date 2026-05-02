@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Arnav Verma — Embedded Systems & UAV Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #050505;
+    --surface: #0c0c0c;
+    --surface-2: #121212;
+    --border: #1e1e1e;
+    --border-bright: #2a2a2a;
+    --accent: #e85d00;
+    --accent-dim: rgba(232,93,0,0.12);
+    --accent-glow: rgba(232,93,0,0.4);
+    --text: #d8d8d0;
+    --text-dim: #5a5a52;
+    --text-bright: #f0ece4;
+    --grid-color: rgba(255,255,255,0.025);
+    --font-display: 'Chakra Petch', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-body: 'IBM Plex Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(5,5,5,0.7) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  main { position: relative; z-index: 1; }
+
+  /* ─── NAV ─────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 60px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(5,5,5,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ─── HERO ────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 3rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--text-bright);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s ease forwards;
+  }
+
+  .hero-name span { color: var(--accent); }
+
+  .hero-sub {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s ease forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.3s ease forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.8rem;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.8rem;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border-bright);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero corner decoration */
+  .hero-corner {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-align: right;
+    line-height: 2;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.5s ease forwards;
+  }
+
+  .hero-corner .value { color: var(--text); }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.6s ease forwards;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTIONS ────────────────────────────── */
+  section {
+    padding: 6rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── ABOUT ───────────────────────────────── */
+  #about .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .stat {
+    background: var(--surface);
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .stat:hover { background: var(--surface-2); }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── TECH ────────────────────────────────── */
+  #tech .tech-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .tech-cat {
+    background: var(--surface);
+    padding: 1.8rem;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tech-cat::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 0;
+    background: var(--accent);
+    transition: height 0.3s ease;
+  }
+
+  .tech-cat:hover::before { height: 100%; }
+  .tech-cat:hover { background: var(--surface-2); }
+
+  .tech-cat-name {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    background: var(--bg);
+    border: 1px solid var(--border-bright);
+    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .tech-tag:hover { color: var(--text); border-color: var(--accent); }
+
+  /* ─── PROJECTS ────────────────────────────── */
+  #projects .project-card {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    margin-bottom: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .project-card:hover { background: var(--surface-2); }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover::before { transform: scaleY(1); }
+
+  .project-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    padding: 2.5rem;
+    align-items: start;
+  }
+
+  .project-index {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+    max-width: 680px;
+  }
+
+  .project-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-highlights li {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .project-highlights li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .stack-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,93,0,0.2);
+    padding: 0.2rem 0.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  .project-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-bright);
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .project-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ─── CONTACT ─────────────────────────────── */
+  #contact .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-text p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .contact-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    background: var(--surface);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .contact-item:hover { background: var(--surface-2); }
+
+  .contact-item-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-platform {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    width: 80px;
+  }
+
+  .contact-handle {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text);
+  }
+
+  .contact-arrow {
+    color: var(--accent);
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+
+  .contact-item:hover .contact-arrow { transform: translateX(4px); }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  footer {
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ─── SCROLL REVEAL ───────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 0 1.5rem; }
+    #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    #contact .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .project-inner { grid-template-columns: 1fr; }
+    .project-links { flex-direction: row; }
+    .hero-corner { display: none; }
+    .scroll-indicator { display: none; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AV // Systems</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tech">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">// UAV · Embedded · Swarm</div>
+  <h1 class="hero-name">Arnav<br><span>Verma</span></h1>
+  <p class="hero-sub">Embedded Systems & Autonomous UAV Engineer.<br>I build and flight-test autonomous systems — from firmware to mission execution.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="https://drive.google.com/file/d/1cWUvUHKMsrNXZVEzxMcz08_4roScOOoZ/view?usp=sharing" target="_blank">↓ Resume</a>
+    <a class="btn-ghost" href="https://www.linkedin.com/in/arnav-verma-826028280/" target="_blank">LinkedIn</a>
+    <a class="btn-ghost" href="https://github.com/arnavV456" target="_blank">GitHub</a>
+  </div>
+
+  <div class="hero-corner">
+    <div>CGPA <span class="value">9.34 / 10.0</span></div>
+    <div>TIET · ECE · <span class="value">Aug 2027</span></div>
+    <div>Head of Avionics · <span class="value">Team Sammpaati</span></div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01</div>
+  <h2 class="section-title">About</h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>Electronics & Computer Engineering student at Thapar Institute of Engineering and Technology, graduating August 2027. My work is at the intersection of hardware and software — custom UAV design, flight-stack integration, companion-computer autonomy, and swarm coordination.</p>
+      <p>I build systems that are flight-tested and mission-capable, not just simulated. Currently researching communication-aware policy learning for decentralized UAV swarms, targeting IEEE RA-L with a co-designed MARL + ESP-NOW mesh architecture.</p>
+      <p>Former intern at EME Corps (Indian Army) on Project Hailing Swarm Drones System. HackRF One operator. SDR signal processing and electronic warfare R&D.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-value">9.34</div>
+        <div class="stat-label">CGPA / 10.0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">22m</div>
+        <div class="stat-label">Flight Time / 5kg Payload</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">1000</div>
+        <div class="stat-label">mm Airframe (mm)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">12S</div>
+        <div class="stat-label">Power System Design</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech">
+  <div class="section-label">02</div>
+  <h2 class="section-title">Stack</h2>
+  <div class="tech-categories reveal">
+    <div class="tech-cat">
+      <div class="tech-cat-name">Languages</div>
+      <div class="tech-items">
+        <span class="tech-tag">C</span>
+        <span class="tech-tag">C++</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">CUDA</span>
+        <span class="tech-tag">Bash</span>
+      </div>
+    </div>
+    <div class="tech-cat">
+      <div class="tech-cat-name">Flight Stacks</div>
+      <div class="tech-items">
+        <span class="tech-tag">PX4 Autopilot</span>
+        <span class="tech-tag">ArduPilot</span>
+        <span class="tech-tag">MAVLink</span>
+        <span class="tech-tag">MAVSDK</span>
+        <span class="tech-tag">DroneKit</span>
+        <span class="tech-tag">QGroundControl</span>
+      </div>
+    </div>
+    <div class="tech-cat">
+      <div class="tech-cat-name">Embedded</div>
+      <div class="tech-items">
+        <span class="tech-tag">STM32</span>
+        <span class="tech-tag">ESP32</span>
+        <span class="tech-tag">Arduino</span>
+        <span class="tech-tag">UART / SPI / I²C</span>
+        <span class="tech-tag">PWM / GPIO</span>
+        <span class="tech-tag">PlatformIO</span>
+      </div>
+    </div>
+    <div class="tech-cat">
+      <div class="tech-cat-name">RF / SDR</div>
+      <div class="tech-items">
+        <span class="tech-tag">HackRF One</span>
+        <span class="tech-tag">ESP-NOW Mesh</span>
+        <span class="tech-tag">GNU Radio</span>
+        <span class="tech-tag">GQRX</span>
+        <span class="tech-tag">4G/LTE UAV Link</span>
+      </div>
+    </div>
+    <div class="tech-cat">
+      <div class="tech-cat-name">Simulation & Tools</div>
+      <div class="tech-items">
+        <span class="tech-tag">Gazebo Harmonic</span>
+        <span class="tech-tag">PX4 SITL</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">KiCad</span>
+        <span class="tech-tag">Git</span>
+        <span class="tech-tag">Linux</span>
+      </div>
+    </div>
+    <div class="tech-cat">
+      <div class="tech-cat-name">Computing</div>
+      <div class="tech-items">
+        <span class="tech-tag">Raspberry Pi 4/5</span>
+        <span class="tech-tag">CUDA / Thrust</span>
+        <span class="tech-tag">NumPy / SciPy</span>
+        <span class="tech-tag">HPC Clusters</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">03</div>
+  <h2 class="section-title">Projects</h2>
+
+  <div class="project-card reveal">
+    <div class="project-inner">
+      <div>
+        <div class="project-index">// 001 · Featured</div>
+        <div class="project-title">Fully Autonomous Heavy-Lift UAV for Disaster Response</div>
+        <p class="project-desc">A fully custom heavy-lift UAV built from the ground up for flood relief missions. The system autonomously scans large regions, detects survivors using onboard perception, and delivers payloads — all without manual control.</p>
+        <ul class="project-highlights">
+          <li>1000 mm coaxial airframe — 3D-printed + carbon fiber construction</li>
+          <li>22 min flight time with 5 kg payload capacity</li>
+          <li>Pixhawk + Raspberry Pi companion computer autonomy stack</li>
+          <li>Mission planning from KML files via QGroundControl</li>
+          <li>Servo-actuated payload delivery mechanism</li>
+          <li>4G LTE long-range communication link</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">PX4</span>
+          <span class="stack-tag">ArduPilot</span>
+          <span class="stack-tag">MAVSDK</span>
+          <span class="stack-tag">Raspberry Pi</span>
+          <span class="stack-tag">Pixhawk</span>
+          <span class="stack-tag">4G LTE</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="https://www.youtube.com/watch?v=RFZTWXnwz-M" target="_blank">▶ Flight Video</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-inner">
+      <div>
+        <div class="project-index">// 002 · Research</div>
+        <div class="project-title">Communication-Aware Swarm Policy Learning</div>
+        <p class="project-desc">IEEE RA-L target paper co-designing MARL coordination policy with knowledge of the ESP-NOW mesh substrate. Tests the hypothesis that substrate-aware policy training outperforms naive deployment across 2–3 quadrotors in real flight.</p>
+        <ul class="project-highlights">
+          <li>Decentralized MARL training on HPC cluster (CTDE paradigm)</li>
+          <li>ESP-NOW mesh characterization — latency, PDR, topology mapping</li>
+          <li>ArduPilot + MAVSDK integration for real hardware validation</li>
+          <li>GPU-accelerated swarm simulation (CUDA/Thrust FDTD-style)</li>
+          <li>Targeting July 2026 IEEE RA-L submission</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">MARL</span>
+          <span class="stack-tag">ESP-NOW</span>
+          <span class="stack-tag">ArduPilot</span>
+          <span class="stack-tag">CUDA</span>
+          <span class="stack-tag">HPC</span>
+          <span class="stack-tag">IEEE RA-L</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <span class="project-link" style="cursor:default;color:var(--accent);border-color:rgba(232,93,0,0.3)">In Progress</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-inner">
+      <div>
+        <div class="project-index">// 003 · EW / SDR</div>
+        <div class="project-title">Autonomous Electronic Warfare Defense Node (AEWDN)</div>
+        <p class="project-desc">A closed-loop agentic AI system modeled on the OODA doctrine for detecting and responding to RF threats — jamming, GPS spoofing, and protocol hijacking — using HackRF One and a real-time signal processing pipeline.</p>
+        <ul class="project-highlights">
+          <li>Real-time FFT waterfall with 8-feature RF extraction pipeline</li>
+          <li>IQ capture and Python/NumPy signal classification</li>
+          <li>TDOA-based jammer geolocation (DSIN variant)</li>
+          <li>GAN-based adversarial RF attack synthesis (ARGOS variant)</li>
+          <li>LSTM onboard link health monitor (ORCA variant)</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">HackRF One</span>
+          <span class="stack-tag">GNU Radio</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">LSTM</span>
+          <span class="stack-tag">GAN</span>
+          <span class="stack-tag">OODA</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <span class="project-link" style="cursor:default;color:var(--accent);border-color:rgba(232,93,0,0.3)">R&D</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-inner">
+      <div>
+        <div class="project-index">// 004 · Indian Army</div>
+        <div class="project-title">Project Hailing — Swarm Drone System</div>
+        <p class="project-desc">Internship at EME Corps, Indian Army. Contributed to a swarm drone coordination system encompassing communications architecture and field-deployable mesh networking for coordinated multi-UAV operations.</p>
+        <div class="project-stack">
+          <span class="stack-tag">EME Corps</span>
+          <span class="stack-tag">Swarm Coordination</span>
+          <span class="stack-tag">Mesh Comms</span>
+          <span class="stack-tag">Field Systems</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <span class="project-link" style="cursor:default;color:var(--text-dim);border-color:var(--border-bright)">Classified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">04</div>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid reveal">
+    <div class="contact-text">
+      <p>Open to research collaborations, internship opportunities in UAV systems, embedded engineering, and RF/EW domains.</p>
+      <p>Currently based in Dehradun, India. Available for remote work and on-site roles.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-item" href="mailto:arnav04verma@gmail.com">
+        <div class="contact-item-left">
+          <span class="contact-platform">Email</span>
+          <span class="contact-handle">arnav04verma@gmail.com</span>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a class="contact-item" href="https://www.linkedin.com/in/arnav-verma-826028280/" target="_blank">
+        <div class="contact-item-left">
+          <span class="contact-platform">LinkedIn</span>
+          <span class="contact-handle">/in/arnav-verma-826028280</span>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a class="contact-item" href="https://github.com/arnavV456" target="_blank">
+        <div class="contact-item-left">
+          <span class="contact-platform">GitHub</span>
+          <span class="contact-handle">arnavV456</span>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a class="contact-item" href="https://medium.com/@arnav04verma" target="_blank">
+        <div class="contact-item-left">
+          <span class="contact-platform">Medium</span>
+          <span class="contact-handle">@arnav04verma</span>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a class="contact-item" href="https://www.youtube.com/@arnav6365" target="_blank">
+        <div class="contact-item-left">
+          <span class="contact-platform">YouTube</span>
+          <span class="contact-handle">@arnav6365</span>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Arnav Verma · arnavverma.carrd.co</div>
+  <div class="footer-status">
+    <div class="status-dot"></div>
+    Available for opportunities
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
