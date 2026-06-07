@@ -3,222 +3,240 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arnav — Avionics & UAV Systems</title>
-  <meta name="description" content="Arnav — Avionics engineer, UAV systems researcher, and embedded systems developer." />
+  <title>Arnav Vashistha — Avionics & UAV Systems</title>
+  <meta name="description" content="Arnav Vashistha — Avionics engineer, UAV systems researcher, and embedded systems developer." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ─── NAV ─────────────────────────────────────────────────── -->
+  <!-- NAV -->
   <nav class="nav">
-    <span class="nav-logo">AV</span>
+    <a href="#" class="nav-logo">AV</a>
     <ul class="nav-links">
-      <li><a href="#about">about</a></li>
-      <li><a href="#work">work</a></li>
-      <li><a href="#research">research</a></li>
-      <li><a href="#contact">contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
+    <a href="resume.pdf" class="nav-resume" target="_blank">Resume ↗</a>
   </nav>
 
-  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <!-- HERO -->
   <header class="hero">
-    <div class="hero-inner">
-      <p class="hero-label mono">[ avionics · embedded · UAV systems ]</p>
-      <h1 class="hero-name">Arnav<br/>Vashistha</h1>
-      <p class="hero-sub">
-        Building autonomous systems that operate where<br/>
-        connectivity, compute, and physics collide.
-      </p>
-      <div class="hero-cta">
-        <a href="#work" class="btn-primary">View work</a>
-        <a href="resume.pdf" class="btn-ghost" target="_blank">Resume ↗</a>
+    <div class="hero-pill">Open to collaborations & freelance</div>
+    <h1 class="hero-heading">
+      Avionics engineer<br/>
+      <span class="hero-heading-muted">building autonomous systems.</span>
+    </h1>
+    <p class="hero-sub">
+      UAV swarms, embedded firmware, RF communications — I work at the intersection
+      of hardware and intelligence.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">See my work</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">9.34</span>
+        <span class="stat-label">CGPA / TIET</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">iDEX</span>
+        <span class="stat-label">Defense-funded</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">IEEE</span>
+        <span class="stat-label">RA-L paper</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">EME</span>
+        <span class="stat-label">Army intern</span>
       </div>
     </div>
-    <div class="hero-grid-bg" aria-hidden="true"></div>
   </header>
 
-  <!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container">
-      <span class="section-label mono">01 / about</span>
       <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I'm a final-year Electronics & Computer Engineering student at TIET (CGPA 9.34),
-            leading avionics for <strong>Team Sammpaati</strong> — a university UAV team working
-            on a defense-funded swarm drone logistics system under <strong>iDEX DISC14</strong>.
-          </p>
-          <p>
-            My work spans the full stack of autonomous systems: from PCB design and embedded
-            firmware to multi-agent planning and RF communications. I care about systems that
-            work in the field, not just in simulation.
-          </p>
-          <p>
-            Currently co-authoring an <strong>IEEE RA-L paper</strong> on communication-aware MARL
-            for decentralized UAV swarms. Also active as a freelancer on Upwork — drone avionics,
-            PCB design, and SITL simulation.
-          </p>
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 class="section-heading">I build systems that fly,<br/>communicate, and think.</h2>
         </div>
-        <div class="about-facts">
-          <!-- ── Edit these freely ── -->
-          <div class="fact">
-            <span class="fact-val mono">9.34</span>
-            <span class="fact-key">CGPA / TIET</span>
-          </div>
-          <div class="fact">
-            <span class="fact-val mono">iDEX</span>
-            <span class="fact-key">DISC14 funded</span>
-          </div>
-          <div class="fact">
-            <span class="fact-val mono">RA-L</span>
-            <span class="fact-key">IEEE paper (in progress)</span>
-          </div>
-          <div class="fact">
-            <span class="fact-val mono">EME</span>
-            <span class="fact-key">Indian Army intern</span>
+        <div class="about-body">
+          <p>
+            Final-year Electronics & Computer Engineering student at Thapar Institute, leading avionics
+            for <strong>Team Sammpaati</strong> — a university UAV team developing a swarm drone logistics
+            system under <strong>iDEX DISC14</strong>, a Government of India defense innovation program.
+          </p>
+          <p>
+            My work spans the full depth of autonomous systems: PCB design, embedded firmware,
+            multi-agent reinforcement learning, and RF communications. I care about systems that
+            perform in the field, not just in simulation.
+          </p>
+          <p>
+            Currently co-authoring an <strong>IEEE RA-L paper</strong> on communication-aware MARL for
+            decentralized UAV swarms, alongside active freelance work on Upwork.
+          </p>
+          <div class="about-tags">
+            <span>ArduPilot</span><span>ROS 2</span><span>KiCad</span>
+            <span>MARL</span><span>SDR</span><span>PX4 SITL</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── WORK ─────────────────────────────────────────────────── -->
-  <section id="work" class="section section-alt">
+  <!-- WORK -->
+  <section id="work" class="section section-tinted">
     <div class="container">
-      <span class="section-label mono">02 / work</span>
-      <h2 class="section-title">Projects</h2>
-
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="uav">UAV</button>
-        <button class="filter-btn" data-filter="embedded">Embedded</button>
-        <button class="filter-btn" data-filter="research">Research</button>
-        <button class="filter-btn" data-filter="freelance">Freelance</button>
+      <p class="eyebrow">Work</p>
+      <div class="work-header">
+        <h2 class="section-heading">Selected projects</h2>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="uav">UAV</button>
+          <button class="filter-btn" data-filter="embedded">Embedded</button>
+          <button class="filter-btn" data-filter="research">Research</button>
+          <button class="filter-btn" data-filter="freelance">Freelance</button>
+        </div>
       </div>
 
       <div class="projects-grid">
 
-        <!-- ══ PROJECT CARD — copy this block to add a project ══ -->
+        <!-- CARD — duplicate this block to add a project -->
         <article class="project-card" data-tags="uav research">
-          <div class="card-header">
-            <span class="card-tag mono">UAV · Research</span>
-            <span class="card-year mono">2024–25</span>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-purple">Research</span>
+            </div>
+            <span class="card-year">2024–25</span>
           </div>
           <h3>Mother–Child UAV Swarm System</h3>
           <p>
             Architected a mother drone (Jetson Orin Nano + Cube Orange+) carrying 10 child drones
-            over DroneCAN. Covers VIO, target detection, LiDAR obstacle avoidance, and
-            decentralized MARL communication policies.
+            over DroneCAN. Full computer vision pipeline: VIO, target detection, LiDAR obstacle
+            avoidance, and decentralized MARL communication policies.
           </p>
-          <ul class="card-tech mono">
-            <li>ArduPilot</li><li>ROS 2 Jazzy</li><li>DroneCAN</li>
-            <li>Jetson Orin Nano</li><li>Intel RealSense D455</li>
-          </ul>
+          <div class="card-tech">
+            <span>ArduPilot</span><span>ROS 2 Jazzy</span><span>DroneCAN</span><span>Jetson Orin</span>
+          </div>
         </article>
-        <!-- ═════════════════════════════════════════════════════ -->
 
         <article class="project-card" data-tags="uav embedded">
-          <div class="card-header">
-            <span class="card-tag mono">UAV · Embedded</span>
-            <span class="card-year mono">2024</span>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-green">Embedded</span>
+            </div>
+            <span class="card-year">2024</span>
           </div>
           <h3>Dual-Band mLRS Communication Architecture</h3>
           <p>
-            Designed a 900 MHz + 2.4 GHz redundant MAVLink telemetry link using RadioMaster
-            Bandit and Ranger modules fed into a Jetson Orin Nano running mavlink-router.
-            Evaluated ELRS vs mLRS for anti-jamming in iDEX defense context.
+            Designed a 900 MHz + 2.4 GHz redundant MAVLink telemetry link for an iDEX defense
+            project. Evaluated ELRS vs mLRS for anti-jamming; validated FHSS behavior with HackRF One
+            and RadioLib on ESP32.
           </p>
-          <ul class="card-tech mono">
-            <li>mLRS</li><li>mavlink-router</li><li>FHSS</li>
-            <li>HackRF One</li><li>RadioLib / ESP32</li>
-          </ul>
+          <div class="card-tech">
+            <span>mLRS</span><span>mavlink-router</span><span>FHSS</span><span>HackRF One</span>
+          </div>
         </article>
 
         <article class="project-card" data-tags="embedded research">
-          <div class="card-header">
-            <span class="card-tag mono">Embedded · RF</span>
-            <span class="card-year mono">2024</span>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-orange">RF</span>
+              <span class="badge badge-green">Embedded</span>
+            </div>
+            <span class="card-year">2024</span>
           </div>
           <h3>AEWDN RF Threat Detection System</h3>
           <p>
-            Built an Airborne Electronic Warfare Detection Node using HackRF One, GNU Radio,
-            and GQRX. Real-time spectrum monitoring for threat classification in contested RF
-            environments.
+            Airborne Electronic Warfare Detection Node using HackRF One, GNU Radio, and GQRX.
+            Real-time spectrum monitoring and threat classification for contested RF environments.
           </p>
-          <ul class="card-tech mono">
-            <li>HackRF One</li><li>GNU Radio</li><li>SDR</li>
-            <li>Python</li><li>GQRX</li>
-          </ul>
+          <div class="card-tech">
+            <span>HackRF One</span><span>GNU Radio</span><span>SDR</span><span>Python</span>
+          </div>
         </article>
 
         <article class="project-card" data-tags="embedded">
-          <div class="card-header">
-            <span class="card-tag mono">Embedded · PCB</span>
-            <span class="card-year mono">2024</span>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-green">Embedded</span>
+              <span class="badge badge-gray">PCB</span>
+            </div>
+            <span class="card-year">2024</span>
           </div>
           <h3>Custom STM32H743 Flight Controller</h3>
           <p>
-            Designed a flight controller from scratch in KiCad — STM32H743 + ESP32-S3 for
-            comms. Includes a 12S BEC PCB (LM62460 + TPS5450 two-stage buck) for powering
+            Designed a flight controller from scratch in KiCad — STM32H743 + ESP32-S3 for wireless
+            comms. Paired with a 12S BEC PCB (LM62460 + TPS5450 two-stage buck) for powering
             Jetson/RPi from drone batteries.
           </p>
-          <ul class="card-tech mono">
-            <li>STM32H743</li><li>ESP32-S3</li><li>KiCad</li>
-            <li>PlatformIO</li><li>VS Code</li>
-          </ul>
+          <div class="card-tech">
+            <span>STM32H743</span><span>ESP32-S3</span><span>KiCad</span><span>PlatformIO</span>
+          </div>
         </article>
 
         <article class="project-card" data-tags="freelance uav">
-          <div class="card-header">
-            <span class="card-tag mono">Freelance · UAV</span>
-            <span class="card-year mono">2024</span>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-gray">Freelance</span>
+            </div>
+            <span class="card-year">2024</span>
           </div>
-          <h3>Autonomous Reefer Container Inspection (Tow-botic Systems)</h3>
+          <h3>Autonomous Container Inspection Drone</h3>
           <p>
-            End-to-end Upwork engagement: BAPLIE container parsing, Gazebo world gen,
-            PX4 SITL wind sweep simulations, autonomous inspection mission planner with
+            Full Upwork engagement for Tow-botic Systems: BAPLIE container parsing, Gazebo world
+            generation, PX4 SITL wind sweep simulations, autonomous reefer inspection with
             MAVSDK-Python, and tethered drone redesign.
           </p>
-          <ul class="card-tech mono">
-            <li>PX4 SITL</li><li>MAVSDK-Python</li><li>Gazebo</li>
-            <li>ROS 2</li><li>Python</li>
-          </ul>
+          <div class="card-tech">
+            <span>PX4 SITL</span><span>MAVSDK-Python</span><span>Gazebo</span><span>ROS 2</span>
+          </div>
         </article>
 
         <article class="project-card" data-tags="research">
-          <div class="card-header">
-            <span class="card-tag mono">Research · MARL</span>
-            <span class="card-year mono">2025</span>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-purple">Research</span>
+              <span class="badge badge-blue">IEEE RA-L</span>
+            </div>
+            <span class="card-year">2025</span>
           </div>
-          <h3>Communication-Aware MARL for Decentralized UAV Swarms</h3>
+          <h3>Communication-Aware MARL for UAV Swarms</h3>
           <p>
-            Co-authoring an IEEE RA-L paper. Multi-agent RL policy learning that explicitly
-            models communication channel quality as a constraint in decentralized
-            swarm coordination.
+            Co-authoring an IEEE RA-L paper. Multi-agent RL policy learning that models communication
+            channel quality as a hard constraint in decentralized swarm coordination.
           </p>
-          <ul class="card-tech mono">
-            <li>MARL</li><li>PyTorch</li><li>PX4 SITL</li>
-            <li>IEEE RA-L</li>
-          </ul>
+          <div class="card-tech">
+            <span>MARL</span><span>PyTorch</span><span>PX4 SITL</span><span>IEEE RA-L</span>
+          </div>
         </article>
 
       </div>
     </div>
   </section>
 
-  <!-- ─── SKILLS ────────────────────────────────────────────────── -->
-  <section id="research" class="section">
+  <!-- SKILLS -->
+  <section id="skills" class="section">
     <div class="container">
-      <span class="section-label mono">03 / skills & tools</span>
-      <h2 class="section-title">Technical Stack</h2>
-
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-heading">Technical stack</h2>
       <div class="skills-grid">
-        <!-- ── Edit skill groups freely ── -->
         <div class="skill-group">
-          <h4 class="mono">Systems & Flight</h4>
+          <h4>Systems & Flight</h4>
           <ul>
             <li>ArduPilot / PX4</li>
             <li>MAVLink / MAVSDK</li>
@@ -228,7 +246,7 @@
           </ul>
         </div>
         <div class="skill-group">
-          <h4 class="mono">Embedded & Hardware</h4>
+          <h4>Embedded & Hardware</h4>
           <ul>
             <li>STM32 / ESP32</li>
             <li>KiCad PCB Design</li>
@@ -238,17 +256,17 @@
           </ul>
         </div>
         <div class="skill-group">
-          <h4 class="mono">RF & Communications</h4>
+          <h4>RF & Communications</h4>
           <ul>
             <li>mLRS / ELRS / LoRa</li>
-            <li>HackRF One / SDR</li>
-            <li>GNU Radio / GQRX</li>
+            <li>HackRF One / GNU Radio</li>
             <li>FHSS implementation</li>
-            <li>BPSK / DBPSK (ADALM-PLUTO)</li>
+            <li>SDR & spectrum analysis</li>
+            <li>BPSK / DBPSK</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h4 class="mono">ML / Research</h4>
+          <h4>ML & Research</h4>
           <ul>
             <li>MARL (multi-agent RL)</li>
             <li>PyTorch / CUDA</li>
@@ -261,41 +279,45 @@
     </div>
   </section>
 
-  <!-- ─── CONTACT ───────────────────────────────────────────────── -->
-  <section id="contact" class="section section-alt">
-    <div class="container contact-inner">
-      <span class="section-label mono">04 / contact</span>
-      <h2 class="section-title">Let's talk.</h2>
-      <p class="contact-sub">
-        Open to research collaborations, consulting, and interesting projects.
-      </p>
-
-      <!-- ── Edit links here ── -->
-      <div class="contact-links">
-        <a href="mailto:your@email.com" class="contact-link">
-          <span class="mono">email ↗</span>
-          <span>your@email.com</span>
+  <!-- CONTACT -->
+  <section id="contact" class="section section-tinted">
+    <div class="container contact-wrap">
+      <div class="contact-left">
+        <p class="eyebrow">Contact</p>
+        <h2 class="section-heading">Let's build<br/>something.</h2>
+        <p class="contact-sub">
+          Open to research collaborations, consulting, and interesting freelance projects.
+        </p>
+      </div>
+      <div class="contact-right">
+        <!-- Edit links here -->
+        <a href="mailto:your@email.com" class="contact-card">
+          <div class="contact-card-label">Email</div>
+          <div class="contact-card-val">your@email.com</div>
+          <span class="contact-arrow">↗</span>
         </a>
-        <a href="https://linkedin.com/in/yourhandle" target="_blank" class="contact-link">
-          <span class="mono">linkedin ↗</span>
-          <span>linkedin.com/in/yourhandle</span>
+        <a href="https://linkedin.com/in/yourhandle" target="_blank" class="contact-card">
+          <div class="contact-card-label">LinkedIn</div>
+          <div class="contact-card-val">linkedin.com/in/yourhandle</div>
+          <span class="contact-arrow">↗</span>
         </a>
-        <a href="https://github.com/arnavV456" target="_blank" class="contact-link">
-          <span class="mono">github ↗</span>
-          <span>github.com/arnavV456</span>
+        <a href="https://github.com/arnavV456" target="_blank" class="contact-card">
+          <div class="contact-card-label">GitHub</div>
+          <div class="contact-card-val">github.com/arnavV456</div>
+          <span class="contact-arrow">↗</span>
         </a>
-        <a href="https://upwork.com/freelancers/yourprofile" target="_blank" class="contact-link">
-          <span class="mono">upwork ↗</span>
-          <span>Freelance profile</span>
+        <a href="https://upwork.com" target="_blank" class="contact-card">
+          <div class="contact-card-label">Upwork</div>
+          <div class="contact-card-val">Freelance profile</div>
+          <span class="contact-arrow">↗</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ─── FOOTER ───────────────────────────────────────────────── -->
   <footer class="footer">
-    <span class="mono">© 2025 Arnav Vashistha</span>
-    <span class="mono footer-built">built from scratch · no templates</span>
+    <span>© 2025 Arnav Vashistha</span>
+    <span>Built from scratch</span>
   </footer>
 
   <script src="main.js"></script>
