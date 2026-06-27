@@ -15,6 +15,20 @@
   });
 })();
 
+/* Lightbox for project gallery images (only runs on project pages) */
+(function () {
+  const lb = document.querySelector('.lightbox');
+  if (!lb) return;
+  const lbImg = lb.querySelector('img');
+  document.querySelectorAll('.project-gallery img, .project-cover img').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+})();
+
 /* Scroll reveal */
 (function () {
   const els = document.querySelectorAll('.project-card, .skill-group, .contact-card, .stat');
