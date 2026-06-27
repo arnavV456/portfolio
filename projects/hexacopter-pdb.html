@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexacopter Power Distribution Board — Arnav Verma</title>
+  <meta name="description" content="Compact 75mm power distribution board for a hexacopter child drone, designed in KiCad." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-green">Embedded</span>
+      <span class="badge badge-gray">In progress</span>
+    </div>
+    <h1 class="project-title">Hexacopter Power Distribution Board</h1>
+    <p class="project-tagline">
+      A compact power distribution board for a hexacopter child drone — six ESC
+      outputs, isolated regulated rails for a Raspberry Pi, Pixhawk Mini, and two
+      servos, all fit inside a 75 mm diameter board.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">75 mm</span>
+        <span class="stat-label">Max diameter</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">40 A</span>
+        <span class="stat-label">Per motor (6×)</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">KiCad</span>
+        <span class="stat-label">Design tool</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/hexacopter-pdb/cover.jpg" alt="Hexacopter PDB schematic overview" />
+  </div>
+
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      Designing a power distribution board (PDB) for a hexacopter child drone in
+      the swarm platform, sized to fit within a 75 mm diameter board. The PDB
+      distributes raw battery power to six ESCs while providing three separate
+      regulated low-voltage rails, isolated from each other to keep ESC and servo
+      switching noise away from the flight controller and companion computer.
+    </p>
+
+    <div class="card-tech">
+      <span>KiCad</span><span>Power Electronics</span><span>PDB Design</span>
+    </div>
+
+    <h2>Power requirements</h2>
+    <ul>
+      <li>Six ESC outputs, up to 40 A per motor (240 A theoretical worst case)</li>
+      <li>5 V / 5 A regulated rail for a Raspberry Pi</li>
+      <li>5.3 V regulated, filtered rail for a Pixhawk Mini flight controller</li>
+      <li>6 V / 5 A rail for two servo motors</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <p>
+      Raw battery voltage feeds a central distribution point that fans out to the
+      six ESC pads directly, and to three independent buck regulator branches —
+      one each for the Pi, Pixhawk, and servos. Keeping these rails separate
+      prevents servo current spikes and ESC switching noise from disturbing the
+      flight controller or companion computer.
+    </p>
+
+    <h2>Protection &amp; layout strategy</h2>
+    <ul>
+      <li>Reverse-polarity protection via a P-channel MOSFET at the battery input</li>
+      <li>TVS diode across the battery rail, voltage rating matched to battery cell count</li>
+      <li>2 oz copper with heavy via stitching on ESC pads and the battery connector</li>
+      <li>Outer ring of ESC pads for short, symmetric current paths to all six motors</li>
+      <li>Ferrite bead and bulk capacitance filtering the Pixhawk rail specifically</li>
+    </ul>
+
+    <h2>Status</h2>
+    <p>
+      Schematic design in progress — battery input protection, ESC outputs, and
+      the Pi 5 V buck are in place, with the Pixhawk and servo rails being added
+      as separate regulated branches before moving to PCB layout and routing.
+    </p>
+
+    <!-- add a .project-gallery block here once layout/routing screenshots exist -->
+  </div>
+
+  <div class="project-pagination">
+    <a href="disaster-response-uav.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Fully Autonomous Heavy-Lift UAV for Disaster Response</span>
+    </a>
+    <a href="hailing-swarm.html" class="pagination-link next">
+      <span class="pagination-label">Next →</span>
+      <span class="pagination-title">Hailing Swarm Drone System</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <div class="lightbox"><img src="" alt="" /></div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
