@@ -1,0 +1,216 @@
+/* ================================================================
+   PROJECT DETAIL PAGES
+   Loaded *after* style.css — reuses all :root tokens from there.
+================================================================ */
+
+/* ── Sub-nav back link ────────────────────────────────────────── */
+.project-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(1.25rem, 5vw, 2.5rem);
+  height: 60px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--text); }
+
+/* ── Header ────────────────────────────────────────────────────── */
+.project-header {
+  padding: 8.5rem clamp(1.25rem, 5vw, 2.5rem) 3rem;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.project-badges {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+.project-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  max-width: 760px;
+}
+.project-tagline {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text-secondary);
+  max-width: 620px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Meta strip: year / role / links — reuses hero-stats look */
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.project-meta .stat { padding: 0.9rem 1.5rem; }
+.project-links {
+  display: flex;
+  gap: 0.6rem;
+  margin-left: auto;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+/* ── Cover image ───────────────────────────────────────────────── */
+.project-cover {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 2.5rem) var(--gap);
+}
+.project-cover img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: block;
+}
+
+/* ── Body content ─────────────────────────────────────────────── */
+.project-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 2.5rem);
+}
+.project-body h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 2.5rem 0 1rem;
+}
+.project-body h2:first-child { margin-top: 0; }
+.project-body p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1.1rem;
+}
+.project-body ul {
+  margin: 0 0 1.1rem;
+  padding-left: 0;
+}
+.project-body ul li {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding-left: 1.3rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.project-body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.project-body strong { color: var(--text); font-weight: 500; }
+.project-body .card-tech { padding-top: 0.5rem; border-top: none; margin-bottom: 1.5rem; }
+
+/* ── Image gallery ─────────────────────────────────────────────── */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+.project-gallery img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  cursor: zoom-in;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s;
+}
+.project-gallery img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.project-gallery.full-width { grid-template-columns: 1fr; }
+.project-gallery.full-width img { height: auto; }
+.img-caption {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: -0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Prev / next footer nav ───────────────────────────────────── */
+.project-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--container);
+  margin: var(--gap) auto 0;
+  padding: 2rem clamp(1.25rem, 5vw, 2.5rem);
+  border-top: 1px solid var(--border);
+}
+.pagination-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 45%;
+}
+.pagination-link.next { text-align: right; align-items: flex-end; }
+.pagination-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.pagination-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color 0.15s;
+}
+.pagination-link:hover .pagination-title { color: var(--accent); }
+
+/* ── Lightbox (simple, no JS framework) ───────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(17,17,17,0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius-md);
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .project-meta { flex-wrap: wrap; }
+  .project-links { margin-left: 0; padding: 0.75rem 1.5rem; }
+  .project-gallery { grid-template-columns: 1fr; }
+  .project-gallery img { height: 220px; }
+  .pagination-link { max-width: 100%; }
+}

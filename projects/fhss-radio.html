@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom FHSS Radio Link for UAV Swarms — Arnav Verma</title>
+  <meta name="description" content="Frequency-hopping spread spectrum radio link built from scratch on ESP32 and Ra-02 SX1278 LoRa modules." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-blue">UAV</span>
+      <span class="badge badge-green">Embedded</span>
+    </div>
+    <h1 class="project-title">Custom FHSS Radio Link for UAV Swarms</h1>
+    <p class="project-tagline">
+      A frequency-hopping spread spectrum (FHSS) radio link built from scratch using
+      Ra-02 SX1278 LoRa modules and RadioLib on ESP32 — designed for resilient,
+      jam-resistant telemetry across UAV swarms.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">2024</span>
+        <span class="stat-label">Timeline</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">Zero packet loss</span>
+        <span class="stat-label">Bench range, SF7/BW250</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">~4800 bps</span>
+        <span class="stat-label">Effective throughput</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/fhss-radio/cover.jpg" alt="FHSS radio link hardware setup" />
+  </div>
+
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      Built a frequency-hopping spread spectrum radio link from scratch using Ra-02
+      SX1278 LoRa modules and RadioLib on ESP32. The link was designed as a
+      resilient telemetry backbone for UAV swarms operating in RF-congested or
+      contested environments.
+    </p>
+
+    <div class="card-tech">
+      <span>LoRa</span><span>SX1278</span><span>FHSS</span><span>ESP32</span><span>HackRF One</span>
+    </div>
+
+    <h2>Implementation</h2>
+    <ul>
+      <li>16-channel LFSR-based pseudorandom hop sequence at 20 hops/sec</li>
+      <li>Startup sync handshake between transmitter and receiver</li>
+      <li>Embedded periodic resync beacons for long-term clock drift correction</li>
+      <li>Hop behavior validated visually on a HackRF One waterfall display</li>
+    </ul>
+
+    <h2>Gallery</h2>
+    <div class="project-gallery">
+      <img src="../assets/img/fhss-radio/01.jpg" alt="ESP32 and SX1278 module wiring" />
+      <img src="../assets/img/fhss-radio/02.jpg" alt="HackRF waterfall showing hop pattern" />
+      <img src="../assets/img/fhss-radio/03.jpg" alt="Bench range test setup" />
+      <img src="../assets/img/fhss-radio/04.jpg" alt="Resync beacon timing trace" />
+    </div>
+
+    <h2>Results</h2>
+    <p>
+      Achieved zero packet loss at bench range using SF7/BW250 settings, with an
+      effective throughput of roughly 4800 bps after hop and sync overhead.
+    </p>
+  </div>
+
+  <div class="project-pagination">
+    <a href="hailing-swarm.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Hailing Swarm Drone System</span>
+    </a>
+    <a href="container-inspection.html" class="pagination-link next">
+      <span class="pagination-label">Next →</span>
+      <span class="pagination-title">Autonomous Container Inspection Drone</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <div class="lightbox"><img src="" alt="" /></div>
+
+  <script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hailing Swarm Drone System — Arnav Verma</title>
+  <meta name="description" content="Multi-drone autonomy platform with a mothership UAV and 10 deployable child drones." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- SUB-NAV -->
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <!-- HEADER — edit title, badges, tagline, meta, links -->
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-blue">UAV</span>
+      <span class="badge badge-purple">Research</span>
+    </div>
+    <h1 class="project-title">Hailing Swarm Drone System</h1>
+    <p class="project-tagline">
+      A multi-drone autonomy platform featuring a mothership UAV and 10 deployable
+      child drones, with onboard perception, GPS-denied navigation, obstacle avoidance,
+      and inter-UAV communication for coordinated autonomous operations.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">2024–25</span>
+        <span class="stat-label">Timeline</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">Head of Avionics</span>
+        <span class="stat-label">Role</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">Team Sammpaati</span>
+        <span class="stat-label">Org</span>
+      </div>
+      <div class="project-links">
+        <!-- delete this <a> if there's no public repo -->
+        <a href="https://github.com/arnavV456" target="_blank" class="btn-secondary">Code ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- COVER IMAGE — main hero shot for the project -->
+  <div class="project-cover">
+    <img src="../assets/img/hailing-swarm/cover.jpg" alt="Hailing Swarm Drone System overview" />
+  </div>
+
+  <!-- BODY — write-up. Duplicate <h2>/<p> blocks as needed -->
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      Developed a multi-drone autonomy platform combining a mothership UAV with 10
+      deployable child drones, designed for coordinated search, surveillance, and
+      relay operations in GPS-denied environments.
+    </p>
+
+    <div class="card-tech">
+      <span>ArduPilot</span><span>ROS 2</span><span>DroneCAN</span><span>Jetson Orin</span>
+    </div>
+
+    <h2>Architecture</h2>
+    <p>
+      The mothership carries a Jetson Orin Nano as the primary compute platform,
+      running the swarm coordination stack and relaying telemetry between child drones
+      and ground control.
+    </p>
+    <ul>
+      <li>ArduPilot flight stack on all platforms, tuned per airframe</li>
+      <li>ROS 2 + MAVROS bridging flight controller and onboard compute</li>
+      <li>DroneCAN for inter-module sensor and actuator communication</li>
+      <li>Onboard VIO pipeline for GPS-denied position estimation</li>
+    </ul>
+
+    <h2>Gallery</h2>
+    <!-- two-column grid for general shots -->
+    <div class="project-gallery">
+      <img src="../assets/img/hailing-swarm/01.jpg" alt="Mothership UAV in flight" />
+      <img src="../assets/img/hailing-swarm/02.jpg" alt="Child drone deployment test" />
+      <img src="../assets/img/hailing-swarm/03.jpg" alt="Avionics bay wiring" />
+      <img src="../assets/img/hailing-swarm/04.jpg" alt="Ground control station view" />
+    </div>
+
+    <!-- for one big diagram/schematic, use full-width instead -->
+    <!--
+    <div class="project-gallery full-width">
+      <img src="../assets/img/hailing-swarm/diagram.jpg" alt="System architecture diagram" />
+    </div>
+    <p class="img-caption">System architecture: mothership ↔ child drone communication.</p>
+    -->
+
+    <h2>Results</h2>
+    <p>
+      Validated coordinated deployment and recovery in field tests, with stable
+      inter-UAV communication maintained across the operational range.
+    </p>
+  </div>
+
+  <!-- PREV/NEXT — link to the projects on either side -->
+  <div class="project-pagination">
+    <a href="container-inspection.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Autonomous Container Inspection Drone</span>
+    </a>
+    <a href="fhss-radio.html" class="pagination-link next">
+      <span class="pagination-label">Next →</span>
+      <span class="pagination-title">Custom FHSS Radio Link for UAV Swarms</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <!-- lightbox overlay, leave as-is -->
+  <div class="lightbox"><img src="" alt="" /></div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
