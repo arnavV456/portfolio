@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disaster Victim Scouting Quadcopter — Arnav Verma</title>
+  <meta name="description" content="Fast wide-area search quadcopter with onboard victim detection, geotagging targets for a companion heavy-payload delivery drone." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-green">Embedded</span>
+      <span class="badge badge-blue">UAV</span>
+    </div>
+    <h1 class="project-title">Disaster Victim Scouting Quadcopter</h1>
+    <p class="project-tagline">
+      A fast, lightweight quadcopter that scans large disaster-affected areas,
+      detects victims onboard in real time, and geotags their locations for a
+      companion heavy-payload drone to deliver medkits and supplies.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">14"</span>
+        <span class="stat-label">Glass fiber props</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">360KV</span>
+        <span class="stat-label">5010 motors</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">Pi + Cam</span>
+        <span class="stat-label">Onboard detection</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/disaster-scout-quadcopter/cover.jpg" alt="Disaster Victim Scouting Quadcopter" />
+  </div>
+
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      This quadcopter is the scouting half of a two-drone disaster response
+      system. Built around 5010 360KV motors on 14-inch glass fiber propellers,
+      it's tuned for speed and range over payload capacity so it can cover large
+      search areas quickly. An onboard Raspberry Pi with a camera module runs a
+      real-time detection model against the live feed, and confirmed victim
+      detections are geotagged with GPS coordinates and handed off to a
+      companion heavy-payload drone for medkit and supply delivery to those
+      exact locations.
+    </p>
+
+    <div class="card-tech">
+      <span>Raspberry Pi</span><span>Computer Vision</span><span>ArduPilot</span>
+    </div>
+
+    <h2>Mission requirements</h2>
+    <ul>
+      <li>Wide-area coverage at speed, prioritizing range and flight time over payload</li>
+      <li>Onboard, real-time victim detection without ground-station dependency</li>
+      <li>Accurate GPS geotagging of each detection for handoff to the delivery drone</li>
+      <li>Reliable operation over disaster terrain where comms and GPS may be degraded</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <p>
+      The Raspberry Pi runs the detection model against the camera feed in
+      flight, and each confirmed detection is timestamped and geotagged against
+      the flight controller's GPS fix. Rather than carrying delivery payload
+      itself, this airframe stays light and fast purely for search — the
+      resulting coordinate list is passed to a separate heavy-payload drone,
+      which flies directly to the marked locations to deliver medkits or other
+      supplies.
+    </p>
+
+    <h2>System role</h2>
+    <ul>
+      <li>Scout drone: wide-area search, onboard detection, GPS geotagging (this build)</li>
+      <li>Payload drone: heavy-lift delivery to marked coordinates (companion system)</li>
+      <li>Two airframes specialized for search and delivery respectively, rather than one drone doing both</li>
+    </ul>
+
+    <h2>Status</h2>
+    <p>
+      Airframe and motor/prop combo selected for search speed and endurance;
+      onboard detection pipeline running on the Raspberry Pi with GPS geotagging
+      of detections in progress.
+    </p>
+
+    <!-- add a .project-gallery block here once flight test / detection screenshots exist -->
+  </div>
+
+  <div class="project-pagination">
+    <a href="hexacopter-pdb.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Hexacopter Power Distribution Board</span>
+    </a>
+    <a href="hailing-swarm.html" class="pagination-link next">
+      <span class="pagination-label">Next →</span>
+      <span class="pagination-title">Hailing Swarm Drone System</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <div class="lightbox"><img src="" alt="" /></div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
