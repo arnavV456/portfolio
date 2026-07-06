@@ -262,6 +262,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: var(--radius-pill);
 }
 
+/* ── PAGE HEADER (used by projects.html) ──────────────────────── */
+.page-header {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 7rem clamp(1.25rem, 5vw, 2.5rem) 1rem;
+}
+.page-header .section-heading { margin-bottom: 0.75rem; }
+.page-sub {
+  color: var(--text-secondary);
+  max-width: 560px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--text); }
+
 /* ── FILTER ────────────────────────────────────────────────── */
 .work-header {
   display: flex;
