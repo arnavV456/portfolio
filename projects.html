@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Projects — Arnav Verma</title>
+  <meta name="description" content="All projects by Arnav Verma — avionics, embedded systems, and autonomous UAV engineering." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">ARNAV VERMA</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="resume.pdf" class="nav-resume" target="_blank">Resume ↗</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <a href="index.html" class="back-link">← Back to home</a>
+    <p class="eyebrow" style="margin-top: 1.5rem;">Work</p>
+    <h1 class="section-heading">All projects</h1>
+    <p class="page-sub">
+      Avionics, embedded systems, RF, and autonomy work across research, coursework, and freelance engagements.
+    </p>
+  </header>
+
+  <!-- WORK -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="work-header">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="uav">UAV</button>
+          <button class="filter-btn" data-filter="embedded">Embedded</button>
+          <button class="filter-btn" data-filter="research">Research</button>
+          <button class="filter-btn" data-filter="freelance">Freelance</button>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Haling Swarm Drone System-->
+        <a class="project-card" href="projects/hailing-swarm.html" data-tags="uav research">
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-purple">Research</span>
+            </div>
+            <span class="card-year">2026</span>
+          </div>
+          <h3>Hailing Swarm Drone System</h3>
+          <p>
+            Developed a multi-drone autonomy platform featuring a mothership UAV and 10 deployable child drones. Implemented onboard perception, GPS-denied navigation, obstacle avoidance, and inter-UAV communication for coordinated autonomous operations.</p>
+          <div class="card-tech">
+            <span>ArduPilot</span><span>ROS 2</span><span>DroneCAN</span><span>Jetson Orin</span>
+          </div>
+        </a>
+
+        <!-- Disaster Managemnet Drone -->
+       <a class="project-card" href="projects/disaster-response-uav.html" data-tags="uav embedded">
+          <div class="card-thumb"><img src="assets/img/disaster-response-uav/cover.png" alt="Fully Autonomous Heavy-Lift UAV for Disaster Response" loading="lazy" /></div>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-green">Embedded</span>
+            </div>
+            <span class="card-year">2023–24</span>
+          </div>
+          <h3>Fully Autonomous Heavy-Lift UAV for Disaster Response</h3>
+          <p>
+            Designed, manufactured, and flight-tested a custom coaxial UAV with a 1000mm wheelbase, hybrid 3D-printed and carbon-fiber airframe, achieving 22 min endurance at 5 kg payload. Integrated Pixhawk + Raspberry Pi for autonomous survivor detection and payload delivery.
+          </p>
+          <div class="card-tech">
+            <span>Pixhawk</span><span>Raspberry Pi</span><span>OpenCV</span><span>4G/LTE</span>
+          </div>
+        </a>
+            <!-- FHSS Radio -->
+        <a class="project-card" href="projects/fhss-radio.html" data-tags="uav embedded">
+          <div class="card-thumb"><img src="assets/img/fhss-radio/cover.jpeg" alt="Custom FHSS Radio Link for UAV Swarms" loading="lazy" /></div>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-green">Embedded</span>
+            </div>
+            <span class="card-year">2026</span>
+          </div>
+          <h3>Custom FHSS Radio Link for UAV Swarms</h3>
+          <p>
+            Built a frequency-hopping spread spectrum (FHSS) radio link from scratch using Ra-02 SX1278 LoRa modules and RadioLib on ESP32.
+            Implemented a 16-channel LFSR-based pseudorandom hop sequence at 20 hops/sec, startup sync handshake, embedded periodic resync for long-term drift correction,
+            and validated hop behavior on a HackRF One waterfall.
+            Achieved zero packet loss at bench range with SF7/BW250 (~4800 bps effective throughput).
+          </p>
+          <div class="card-tech">
+            <span>LoRa</span><span>sx1278</span><span>FHSS</span><span>ESP32</span><span>HackRF One</span>
+          </div>
+        </a>
+            <!-- Container Inspection-->
+        <a class="project-card" href="projects/container-inspection.html" data-tags="freelance uav">
+          <div class="card-thumb"><img src="assets/img/container-inspection/cover.jpeg" alt="Autonomous Container Inspection Drone" loading="lazy" /></div>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-gray">Freelance</span>
+            </div>
+            <span class="card-year">2026</span>
+          </div>
+          <h3>Autonomous Container Inspection Drone</h3>
+          <p>
+            Full Upwork engagement for Tow-botic Systems: BAPLIE container parsing, Gazebo world
+            generation, PX4 SITL wind sweep simulations, autonomous reefer inspection with
+            MAVSDK-Python, and tethered drone redesign.
+          </p>
+          <div class="card-tech">
+            <span>PX4 SITL</span><span>MAVSDK-Python</span><span>Gazebo</span><span>ROS 2</span>
+          </div>
+        </a>
+
+        <!-- Hexacopter PDB-->
+        <a class="project-card" href="projects/hexacopter-pdb.html" data-tags="embedded">
+          <div class="card-thumb"><img src="assets/img/hexacopter-pdb/cover.jpg" alt="Hexacopter Power Distribution Board" loading="lazy" /></div>
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-green">Embedded</span>
+              <span class="badge badge-blue">UAV</span>
+            </div>
+            <span class="card-year">2026</span>
+          </div>
+          <h3>Hexacopter Power Distribution Board</h3>
+          <p>
+            Designed a compact 75 mm power distribution board for a hexacopter UAV, featuring six 40 A ESC outputs, high-current power routing, and isolated regulated power rails for a Raspberry Pi, Pixhawk Mini, and dual servo actuators, with emphasis on power integrity, EMI mitigation, and reliable operation in autonomous flight systems.
+          </p>
+          <div class="card-tech">
+            <span>KiCad</span><span>Power Electronics</span><span>PDB Design</span>
+          </div>
+        </a>
+
+       <!-- Scout Drone-->
+        <a class="project-card" href="projects/disaster-scout-quadcopter.html" data-tags="uav embedded">
+          <div class="card-thumb"><img src="assets/img/disaster-scout-quadcopter/cover.jpeg" alt="Disaster Victim Scouting Quadcopter" loading="lazy" /></div>
+          <div class="card-meta">
+             <div class="card-badges">
+              <span class="badge badge-green">Embedded</span>
+              <span class="badge badge-blue">UAV</span>
+            </div>
+            <span class="card-year">2026</span>
+          </div>
+          <h3>Disaster Victim Scouting Quadcopter</h3>
+          <p>
+            Built a fast wide-area search quadcopter for disaster response, powered by 5010 360KV motors on 14-inch glass fiber propellers for extended range and payload-free speed. Carries an onboard Raspberry Pi with a camera module running real-time victim detection models, geotagging detected victims with GPS coordinates. Operates as the scouting half of a two-drone system, handing off precise coordinates to a companion heavy-payload drone for medkit and supply delivery to confirmed locations.
+          </p>
+          <div class="card-tech">
+            <span>Raspberry Pi</span><span>Computer Vision</span><span>ArduPilot</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma </span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
