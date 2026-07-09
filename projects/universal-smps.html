@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universal Isolated SMPS — Arnav Verma</title>
+  <meta name="description" content="A 30W isolated AC-DC flyback power supply designed in KiCad 9, converting universal mains input into regulated isolated DC outputs." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-blue">Power Electronics</span>
+      <span class="badge badge-green">PCB Design</span>
+    </div>
+    <h1 class="project-title">Universal Isolated SMPS</h1>
+    <p class="project-tagline">
+      A 30W isolated AC-DC flyback power supply designed in KiCad 9, capable of
+      converting a universal mains input into regulated isolated DC outputs —
+      complete with EMI filtering, surge protection, isolated feedback, a custom
+      transformer footprint, and manufacturing-ready outputs.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">30W</span>
+        <span class="stat-label">Output power</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">85–265 VAC</span>
+        <span class="stat-label">Universal input</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">4 kV</span>
+        <span class="stat-label">Reinforced isolation</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/universal-smps/pcb-top.png" alt="Universal Isolated SMPS PCB top view" />
+  </div>
+
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      This project implements a complete offline switch-mode power supply built
+      around the TOP244Y integrated PWM controller in an isolated flyback
+      topology. The design covers the full signal chain from mains input to
+      regulated isolated DC output: EMI filtering, surge protection, the
+      flyback conversion stage itself, isolated feedback, and dual regulated
+      outputs — all laid out as a manufacturing-ready two-layer PCB in KiCad 9.
+    </p>
+
+    <div class="card-tech">
+      <span>KiCad 9</span><span>TOP244Y</span><span>Flyback</span><span>Isolated Feedback</span><span>EMI Filtering</span>
+    </div>
+
+    <h2>Specifications</h2>
+    <table class="spec-table">
+      <tbody>
+        <tr><td>Input Voltage</td><td>85–265 VAC</td></tr>
+        <tr><td>Output 1</td><td>12V @ 2.5A</td></tr>
+        <tr><td>Output 2</td><td>5V @ 1A</td></tr>
+        <tr><td>Output Power</td><td>30W</td></tr>
+        <tr><td>Isolation</td><td>4 kV</td></tr>
+        <tr><td>Topology</td><td>Flyback</td></tr>
+        <tr><td>Controller IC</td><td>TOP244Y</td></tr>
+        <tr><td>Transformer</td><td>MYRRA 74030</td></tr>
+        <tr><td>PCB Layers</td><td>2</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Functional Overview</h2>
+
+    <h3>AC Input Stage</h3>
+    <ul>
+      <li>Universal AC input with fuse protection</li>
+      <li>MOV surge suppressor</li>
+      <li>Common-mode choke</li>
+      <li>X and Y class safety capacitors for EMI suppression</li>
+    </ul>
+
+    <h3>High Voltage DC Bus</h3>
+    <ul>
+      <li>Full bridge rectifier</li>
+      <li>Bulk electrolytic capacitor for DC filtering</li>
+    </ul>
+
+    <h3>Flyback Converter</h3>
+    <ul>
+      <li>TOP244Y offline switching controller</li>
+      <li>MYRRA 74030 flyback transformer</li>
+      <li>Auxiliary winding for self-powered controller bias</li>
+    </ul>
+
+    <h3>Protection Networks</h3>
+    <ul>
+      <li>Primary RCD snubber to clamp transformer leakage spikes</li>
+      <li>Secondary RC snubber to reduce ringing and EMI</li>
+    </ul>
+
+    <h3>Output Stage</h3>
+    <ul>
+      <li>MBR1060 Schottky rectification</li>
+      <li>LC output filtering for low ripple 12V output</li>
+    </ul>
+
+    <h3>Feedback Network</h3>
+    <ul>
+      <li>LTV817A optocoupler</li>
+      <li>Zener reference network</li>
+      <li>Closed-loop isolated voltage regulation</li>
+    </ul>
+
+    <h3>Additional Output</h3>
+    <ul>
+      <li>Buck converter generating a regulated 5V rail from the 12V output</li>
+    </ul>
+
+    <h2>PCB Design Highlights</h2>
+    <ul>
+      <li>Two-layer PCB with custom transformer footprint and schematic symbol</li>
+      <li>Wide power traces for high-current paths</li>
+      <li>Dedicated primary HV_RETURN copper pour and separate secondary return plane</li>
+      <li>Isolation barrier maintained between primary and secondary</li>
+      <li>Creepage and clearance maintained across the isolation boundary</li>
+      <li>Optimized placement for reduced switching loop area</li>
+      <li>3D PCB model and manufacturing-ready Gerber generation</li>
+    </ul>
+
+    <h2>Gallery</h2>
+    <div class="project-gallery">
+      <img src="../assets/img/universal-smps/pcb-top.png" alt="PCB top view" />
+      <img src="../assets/img/universal-smps/pcb-bottom.png" alt="PCB bottom view" />
+      <img src="../assets/img/universal-smps/schematic.png" alt="Full schematic" />
+    </div>
+
+    <h2>Repository Structure</h2>
+    <pre class="code-block"><code>Hardware/
+├── universal_30w_smps.kicad_pro
+├── universal_30w_smps.kicad_sch
+├── universal_30w_smps.kicad_pcb
+└── MYRRA.pretty/
+Manufacturing/
+├── Gerbers
+└── Drill Files
+Images/
+├── PCB_Front.png
+├── PCB_Back.png
+└── schematic.png
+3D Models/
+README.md</code></pre>
+
+    <h2>Design Tools</h2>
+    <div class="card-tech">
+      <span>KiCad 9</span><span>Custom KiCad Libraries</span><span>Git & GitHub</span>
+    </div>
+
+    <h2>Future Improvements</h2>
+    <ul>
+      <li>Thermal analysis</li>
+      <li>Efficiency characterization</li>
+      <li>EMI compliance testing</li>
+      <li>Hardware validation</li>
+      <li>Oscilloscope waveform measurements</li>
+      <li>Short-circuit and overload testing</li>
+    </ul>
+  </div>
+
+  <div class="project-pagination">
+    <a href="container-inspection.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Autonomous Container Inspection Drone</span>
+    </a>
+    <a href="../index.html#work" class="pagination-link next">
+      <span class="pagination-label">More →</span>
+      <span class="pagination-title">All Projects</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <div class="lightbox"><img src="" alt="" /></div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
