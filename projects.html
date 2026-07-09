@@ -33,7 +33,7 @@
       Avionics, embedded systems, RF, and autonomy work across research, coursework, and freelance engagements.
     </p>
   </header>
-
+  
   <!-- WORK -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
@@ -49,23 +49,30 @@
 
       <div class="projects-grid">
 
-        <!-- Haling Swarm Drone System-->
-        <a class="project-card" href="projects/hailing-swarm.html" data-tags="uav research">
+
+        <!-- Universal Isolated SMPS -->
+        <a class="project-card" href="projects/universal-smps.html" data-tags="power-electronics pcb">
+          <div class="card-thumb"><img src="assets/img/universal-smps/pcb-top.png" alt="Universal Isolated SMPS" loading="lazy" /></div>
           <div class="card-meta">
             <div class="card-badges">
-              <span class="badge badge-blue">UAV</span>
-              <span class="badge badge-purple">Research</span>
+              <span class="badge badge-blue">Power Electronics</span>
+              <span class="badge badge-green">PCB Design</span>
             </div>
             <span class="card-year">2026</span>
           </div>
-          <h3>Hailing Swarm Drone System</h3>
+          <h3>Universal Isolated SMPS</h3>
           <p>
-            Developed a multi-drone autonomy platform featuring a mothership UAV and 10 deployable child drones. Implemented onboard perception, GPS-denied navigation, obstacle avoidance, and inter-UAV communication for coordinated autonomous operations.</p>
+            Designed a 30W isolated AC-DC flyback power supply in KiCad 9 around the TOP244Y controller,
+            converting universal 85–265 VAC mains input into regulated 12V/5V isolated DC outputs.
+            Implemented EMI filtering, surge protection, a custom MYRRA 74030 transformer footprint,
+            primary RCD and secondary RC snubber networks, and optocoupler-based isolated feedback.
+            Delivered as a manufacturing-ready two-layer PCB with 4 kV reinforced isolation.
+          </p>
           <div class="card-tech">
-            <span>ArduPilot</span><span>ROS 2</span><span>DroneCAN</span><span>Jetson Orin</span>
+            <span>KiCad 9</span><span>TOP244Y</span><span>Flyback</span><span>Isolated Feedback</span><span>EMI Filtering</span>
           </div>
         </a>
-
+        
         <!-- Disaster Managemnet Drone -->
        <a class="project-card" href="projects/disaster-response-uav.html" data-tags="uav embedded">
           <div class="card-thumb"><img src="assets/img/disaster-response-uav/cover.png" alt="Fully Autonomous Heavy-Lift UAV for Disaster Response" loading="lazy" /></div>
@@ -163,9 +170,29 @@
             <span>Raspberry Pi</span><span>Computer Vision</span><span>ArduPilot</span>
           </div>
         </a>
+
+        <!-- Haling Swarm Drone System-->
+        <a class="project-card" href="projects/hailing-swarm.html" data-tags="uav research">
+          <div class="card-meta">
+            <div class="card-badges">
+              <span class="badge badge-blue">UAV</span>
+              <span class="badge badge-purple">Research</span>
+            </div>
+            <span class="card-year">2026</span>
+          </div>
+          <h3>Hailing Swarm Drone System</h3>
+          <p>
+            Developed a multi-drone autonomy platform featuring a mothership UAV and 10 deployable child drones. Implemented onboard perception, GPS-denied navigation, obstacle avoidance, and inter-UAV communication for coordinated autonomous operations.</p>
+          <div class="card-tech">
+            <span>ArduPilot</span><span>ROS 2</span><span>DroneCAN</span><span>Jetson Orin</span>
+          </div>
+        </a>
+        
       </div>
     </div>
   </section>
+
+  
 
   <footer class="footer">
     <span>© 2026 Arnav Verma </span>
