@@ -24,7 +24,7 @@
   --radius-pill:  100px;
 
   --container:    1080px;
-  --gap:          clamp(3.5rem, 8vw, 6rem);
+  --gap:          clamp(2.5rem, 5vw, 4rem);
   --ease:         cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -102,12 +102,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── HERO ──────────────────────────────────────────────────── */
 .hero {
-  min-height: 100svh;
+  min-height: 82svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 8rem clamp(1.25rem, 5vw, 2.5rem) 5rem;
+  padding: 7rem clamp(1.25rem, 5vw, 2.5rem) 3rem;
   max-width: var(--container);
   margin: 0 auto;
 }
@@ -152,7 +152,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--text-secondary);
   max-width: 520px;
   line-height: 1.7;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   opacity: 0;
   animation: fadeUp 0.6s var(--ease) 0.25s forwards;
 }
@@ -161,7 +161,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 4rem;
+  margin-bottom: 2.75rem;
   opacity: 0;
   animation: fadeUp 0.6s var(--ease) 0.35s forwards;
 }
@@ -382,13 +382,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 0.875rem;
   color: var(--text-secondary);
   line-height: 1.65;
-  flex: 1;
 }
 .card-tech {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 0.35rem;
   padding-top: 0.25rem;
+  margin-top: auto;
   border-top: 1px solid var(--border-light);
 }
 .card-tech span {
