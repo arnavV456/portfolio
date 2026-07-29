@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USB-C Power Delivery Trigger Board — Arnav Verma</title>
+  <meta name="description" content="A compact USB-C Power Delivery trigger PCB designed in KiCad, negotiating selectable PD voltages using the HUSB238 controller." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-green">PCB Design</span>
+      <span class="badge badge-blue">Power Electronics</span>
+    </div>
+    <h1 class="project-title">USB-C Power Delivery Trigger Board</h1>
+    <p class="project-tagline">
+      A compact USB-C Power Delivery (PD) trigger PCB designed in KiCad that
+      negotiates selectable PD voltages using the HUSB238 controller, with
+      input protection, a PMOS-controlled output power path, and a
+      screw-terminal output.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">5–20V</span>
+        <span class="stat-label">Selectable PD output</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">HUSB238</span>
+        <span class="stat-label">PD controller</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">KiCad</span>
+        <span class="stat-label">Design tool</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/usb-pd-trigger/pcb-render.png" alt="USB-C PD Trigger Board 3D render" />
+  </div>
+
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      Designed a compact USB-C Power Delivery trigger PCB in KiCad that
+      negotiates selectable PD voltages (5V, 9V, 12V, 15V, and 20V) using the
+      HUSB238 controller. The board includes USB-C input protection with ESD,
+      TVS, and a resettable polyfuse, a PMOS-controlled output power path,
+      configurable voltage selection via jumpers, status LEDs, and a
+      screw-terminal output. Completed from schematic capture through PCB
+      layout with clean ERC and DRC verification.
+    </p>
+
+    <div class="card-tech">
+      <span>KiCad</span><span>PCB Design</span><span>Power Electronics</span>
+    </div>
+
+    <h2>Functional Overview</h2>
+
+    <h3>USB-C Input Stage</h3>
+    <ul>
+      <li>USB-C receptacle with CC1/CC2 sense lines</li>
+      <li>ESD protection array and TVS clamping on VBUS</li>
+      <li>Resettable polyfuse for input overcurrent protection</li>
+    </ul>
+
+    <h3>PD Negotiation</h3>
+    <ul>
+      <li>HUSB238 PD sink controller handling the USB-C PD handshake</li>
+      <li>Selectable output voltage (5V/9V/12V/15V/20V) via jumper header</li>
+      <li>Voltage-set resistor network setting the VSET/ISET thresholds</li>
+    </ul>
+
+    <h3>Output Power Path</h3>
+    <ul>
+      <li>PMOS-controlled switch gating VBus to Vout once negotiation completes</li>
+      <li>Bulk output capacitance for ripple filtering</li>
+      <li>Screw-terminal output for easy load connection</li>
+    </ul>
+
+    <h3>Status Indication</h3>
+    <ul>
+      <li>Power LED indicating VBus presence</li>
+      <li>Output LED indicating an active, negotiated output</li>
+    </ul>
+
+    <h2>PCB Design Highlights</h2>
+    <ul>
+      <li>Compact two-layer layout completed from schematic capture through routing</li>
+      <li>Clean ERC and DRC verification prior to fabrication</li>
+      <li>3D PCB render for mechanical/enclosure fit checks</li>
+    </ul>
+
+    <h2>Gallery</h2>
+    <div class="project-gallery">
+      <img src="../assets/img/usb-pd-trigger/pcb-render.png" alt="USB-C PD Trigger Board 3D render" />
+      <img src="../assets/img/usb-pd-trigger/schematic.png" alt="USB-C PD Trigger Board schematic" />
+    </div>
+
+    <h2>Design Tools</h2>
+    <div class="card-tech">
+      <span>KiCad</span><span>PCB Design</span><span>Power Electronics</span>
+    </div>
+  </div>
+
+  <div class="project-pagination">
+    <a href="hexacopter-pdb.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Hexacopter Power Distribution Board</span>
+    </a>
+    <a href="../index.html#work" class="pagination-link next">
+      <span class="pagination-label">More →</span>
+      <span class="pagination-title">All Projects</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <div class="lightbox"><img src="" alt="" /></div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
