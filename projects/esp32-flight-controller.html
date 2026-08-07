@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESP32 Brushed Quadcopter Flight Controller — Arnav Verma</title>
+  <meta name="description" content="A custom-designed flight controller for a 1S brushed quadcopter, built around the ESP32-WROOM-32 with onboard IMU sensing and direct MOSFET motor drive." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-accent">Flagship</span>
+      <span class="badge badge-blue">UAV</span>
+      <span class="badge badge-green">Embedded</span>
+    </div>
+    <h1 class="project-title">ESP32 Brushed Quadcopter Flight Controller</h1>
+    <p class="project-tagline">
+      A custom-designed flight controller for a 1S brushed quadcopter, built
+      around the ESP32-WROOM-32 with onboard IMU sensing and direct
+      MOSFET-driven motor control — currently in hardware bring-up.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">ESP32-WROOM-32</span>
+        <span class="stat-label">Flight controller MCU</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">MPU6500</span>
+        <span class="stat-label">6-axis IMU</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">4× AO3400A</span>
+        <span class="stat-label">Brushed motor drive</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/esp32-flight-controller/pcb-render.png" alt="ESP32 Brushed Quadcopter Flight Controller board 3D render" />
+  </div>
+
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      Designed a custom flight controller board for a 1S brushed quadcopter
+      around the ESP32-WROOM-32, combining onboard MPU6500 IMU sensing with
+      four AO3400A low-side MOSFETs for direct PWM motor drive. The board
+      integrates power regulation, USB-C for programming, and onboard status
+      indicators onto a single compact two-layer PCB.
+    </p>
+    <p>
+      The board is currently in hardware bring-up — validating power
+      delivery, IMU communication, and motor driver switching ahead of
+      flight firmware integration.
+    </p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li>ESP32-WROOM-32 as the flight controller core</li>
+      <li>MPU6500 6-axis IMU for attitude sensing</li>
+      <li>4× AO3400A low-side MOSFETs for direct brushed-motor PWM drive, with gate and pull-down resistor networks</li>
+      <li>USB-C connector for programming and power</li>
+      <li>1S LiPo input with onboard power switch and bulk/decoupling capacitors</li>
+      <li>Reset and boot/user tactile buttons</li>
+    </ul>
+
+    <h2>Design Process</h2>
+    <ul>
+      <li>Validated the core architecture — ESP32 firmware, IMU communication, and PWM motor control — on a breadboard/perfboard proof-of-concept before committing to a custom PCB</li>
+      <li>Laid out a compact two-layer PCB in KiCad, integrating the IMU, motor drivers, power regulation, and USB-C interface onto a single board</li>
+    </ul>
+
+    <div class="card-tech">
+      <span>ESP32</span><span>MPU6500</span><span>AO3400A</span><span>KiCad</span><span>Brushed Motor Control</span>
+    </div>
+  </div>
+
+  <div class="project-pagination">
+    <a href="usb-radio-interface.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Isolated USB Radio-to-PC Interface</span>
+    </a>
+    <a href="../index.html#work" class="pagination-link next">
+      <span class="pagination-label">More →</span>
+      <span class="pagination-title">All Projects</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>

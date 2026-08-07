@@ -409,6 +409,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 1rem;
   margin-bottom: 1rem;
 }
+/* A lone trailing card (odd count) spans the full row instead of leaving a gap */
+.featured-row .project-card--featured:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+.featured-row .project-card--featured:last-child:nth-child(odd) .card-thumb {
+  height: 300px;
+}
 .project-card--featured .card-thumb { height: 230px; }
 .project-card--featured h3 { font-size: 1.2rem; }
 .project-card--featured p { font-size: 0.92rem; }
