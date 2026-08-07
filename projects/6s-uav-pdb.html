@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6S UAV Power Distribution Board — Arnav Verma</title>
+  <meta name="description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and ESC power sized to IPC-2152 standards." />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://arnavv456.github.io/portfolio/projects/6s-uav-pdb.html" />
+  <meta property="og:title" content="6S UAV Power Distribution Board — Arnav Verma" />
+  <meta property="og:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and ESC power sized to IPC-2152 standards." />
+  <meta property="og:image" content="https://arnavv456.github.io/portfolio/assets/img/6s-uav-pdb/pcb-render.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="6S UAV Power Distribution Board — Arnav Verma" />
+  <meta name="twitter:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and ESC power sized to IPC-2152 standards." />
+  <meta name="twitter:image" content="https://arnavv456.github.io/portfolio/assets/img/6s-uav-pdb/pcb-render.png" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-accent">Flagship</span>
+      <span class="badge badge-green">PCB Design</span>
+      <span class="badge badge-blue">Power Electronics</span>
+    </div>
+    <h1 class="project-title">6S UAV Power Distribution Board</h1>
+    <p class="project-tagline">
+      A 6S UAV power distribution board with reverse-polarity and transient
+      protection, dual independently regulated 5A rails, and raw ESC power
+      distribution sized to IPC-2152 standards.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">80A</span>
+        <span class="stat-label">Combined trunk current</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">2× TPS5450</span>
+        <span class="stat-label">Regulated 5A rails</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">6S</span>
+        <span class="stat-label">Battery input</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/6s-uav-pdb/pcb-render.png" alt="6S UAV Power Distribution Board 3D render" />
+  </div>
+
+  <div class="project-body">
+    <p style="font-size:0.85rem; color:var(--text-muted); border-left: 2px solid var(--border); padding-left: 0.85rem; margin-bottom: 2rem;">
+      Currently at the design stage — schematic and PCB layout complete, not yet fabricated.
+    </p>
+
+    <h2>Overview</h2>
+    <p>
+      Designed a 6S power distribution board for a UAV, splitting power into
+      three paths: a protected and regulated stage for onboard compute and
+      servos, and a raw, high-current stage feeding the ESCs directly. The
+      protection and regulation architecture was validated against two
+      reverse-engineered commercial reference PDBs before finalizing the
+      design.
+    </p>
+
+    <h2>Input Protection</h2>
+    <h3>Reverse-Polarity Protection</h3>
+    <ul>
+      <li>ROHM RD3L01BATTL1 P-channel MOSFET (60V, 10A, 65mΩ RDS(on)), high-side switching topology</li>
+    </ul>
+    <h3>Gate Protection Network</h3>
+    <ul>
+      <li>10kΩ pull-down resistor + SMBJ5352B 15V Zener clamp — added after identifying that a bare pull-down would drive the gate beyond its rated VGS at full 6S charge voltage</li>
+    </ul>
+    <h3>Overcurrent Protection</h3>
+    <ul>
+      <li>SFE2150 fast-acting fuse (15A/250V, 1808 SMD)</li>
+    </ul>
+    <h3>Transient Suppression</h3>
+    <ul>
+      <li>SMBJ26A unidirectional TVS diode (26V standoff, 42.1V clamp), clamping voltage spikes from ESC back-EMF before they reach the regulated rails</li>
+    </ul>
+
+    <h2>Regulated Power Rails</h2>
+    <p>
+      Two independently regulated 5A rails, each built around a TPS5450DDA
+      (36V, 5A, non-synchronous buck, PowerPAD SOIC-8):
+    </p>
+    <ul>
+      <li>Rail 1 — Fixed 5V/5A: dedicated to onboard companion compute (RDK X3)</li>
+      <li>Rail 2 — Solder-jumper selectable 5V / 7.4V / 12V: feeds the servo bus (payload release + gimbal), with the output set via a 3-position solder-jumper feedback divider so the exact voltage can be chosen at assembly time without a schematic change</li>
+    </ul>
+    <p>Shared design details across both rails:</p>
+    <ul>
+      <li>Inductor and output capacitor values recalculated from the TPS5450's own datasheet design equations for the board's real 6S operating voltage, not copied from the datasheet's 12V worked example</li>
+      <li>Catch diode: PDS540-13 (Diodes Inc., 40V/5A Schottky)</li>
+      <li>Inductor: Panasonic ETQP5M330YFC (32.5µH, 7.6A Isat, AEC-Q200 automotive-qualified, low-buzz metal composite core for vibration resistance)</li>
+      <li>Both rails draw from the protected bus downstream of the reverse-polarity/fuse/TVS stage — never directly off raw battery voltage</li>
+    </ul>
+
+    <h2>ESC / Motor Power Distribution</h2>
+    <ul>
+      <li>Raw, unregulated battery bus feeding four ESC connectors — deliberately unprotected on this branch, matching verified industry practice (validated by reverse-engineering two commercial reference PDBs before committing to the architecture)</li>
+      <li>Sized for 80A combined trunk current, 20A per motor branch</li>
+      <li>High-current pad footprints and 2oz outer-layer copper, dimensioned using IPC-2152 current-carrying capacity standards</li>
+    </ul>
+
+    <div class="card-tech">
+      <span>TPS5450</span><span>RD3L01BATTL1</span><span>KiCad</span><span>IPC-2152</span><span>Power Electronics</span>
+    </div>
+  </div>
+
+  <div class="project-pagination">
+    <a href="esp32-flight-controller.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">ESP32 Brushed Quadcopter Flight Controller</span>
+    </a>
+    <a href="../index.html#work" class="pagination-link next">
+      <span class="pagination-label">More →</span>
+      <span class="pagination-title">All Projects</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
