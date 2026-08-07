@@ -172,7 +172,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0;
   animation: fadeUp 0.6s var(--ease) 0.15s forwards;
 }
-.hero-heading-muted { color: var(--text-secondary); }
+.hero-heading-muted {
+  display: inline-block;
+  color: var(--text-secondary);
+  font-size: clamp(1.4rem, 3vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-top: 0.35rem;
+}
 
 .hero-sub {
   font-size: clamp(1rem, 2.2vw, 1.15rem);
