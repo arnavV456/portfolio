@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isolated USB Radio-to-PC Interface — Arnav Verma</title>
+  <meta name="description" content="A fully-isolated USB-to-radio interface board designed for a commercial telecom client, with drop-in Asterisk chan_usbradio compatibility." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-accent">Flagship</span>
+      <span class="badge badge-gray">Freelance</span>
+      <span class="badge badge-green">PCB Design</span>
+    </div>
+    <h1 class="project-title">Isolated USB Radio-to-PC Interface</h1>
+    <p class="project-tagline">
+      A fully-isolated USB-to-radio interface board designed for a commercial
+      telecom client, built for drop-in compatibility with Asterisk
+      chan_usbradio.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">ADuM3160</span>
+        <span class="stat-label">USB isolation</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">CM119B</span>
+        <span class="stat-label">Audio codec</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">JLCPCB</span>
+        <span class="stat-label">Manufacturing-ready</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover">
+    <img src="../assets/img/usb-radio-interface/pcb-render.png" alt="Isolated USB Radio-to-PC Interface board 3D render" />
+  </div>
+
+  <div class="project-body">
+    <p style="font-size:0.85rem; color:var(--text-muted); border-left: 2px solid var(--border); padding-left: 0.85rem; margin-bottom: 2rem;">
+      This was a freelance engagement for a commercial telecom client. Client and end-use details are confidential — the summary below covers the engineering scope only.
+    </p>
+
+    <h2>Overview</h2>
+    <p>
+      Designed a fully-isolated USB-to-radio interface board for a commercial
+      telecom client, combining ADuM3160 USB isolation, a CM119B audio codec,
+      and an FT231X UART bridge with dual-OS PTT/COR control — Linux HID GPIO
+      on one side and Windows FTDI modem lines on the other — for drop-in
+      compatibility with Asterisk chan_usbradio.
+    </p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li>ADuM3160-based USB isolation barrier</li>
+      <li>CM119B audio codec for radio audio I/O</li>
+      <li>FT231X UART bridge for control and data</li>
+      <li>Dual-OS PTT/COR control: Linux HID GPIO and Windows FTDI modem lines</li>
+      <li>Drop-in compatibility with Asterisk chan_usbradio</li>
+    </ul>
+
+    <h2>Manufacturing & Delivery</h2>
+    <ul>
+      <li>Manufacturing-ready KiCad package: schematic, PCB, Gerbers, BOM/CPL, and panel drilling drawings</li>
+      <li>Delivered for JLCPCB fabrication</li>
+      <li>Resolved isolation-barrier creepage/clearance and thermal/signal-integrity considerations</li>
+      <li>Verified alternate/second-source components (CM108 family, genuine-vs-counterfeit FTDI) for supply resilience</li>
+    </ul>
+
+    <div class="card-tech">
+      <span>ADuM3160</span><span>CM119B</span><span>FT231X</span><span>KiCad</span><span>JLCPCB</span><span>chan_usbradio</span>
+    </div>
+  </div>
+
+  <div class="project-pagination">
+    <a href="universal-smps.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Universal Isolated SMPS</span>
+    </a>
+    <a href="../index.html#work" class="pagination-link next">
+      <span class="pagination-label">More →</span>
+      <span class="pagination-title">All Projects</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
