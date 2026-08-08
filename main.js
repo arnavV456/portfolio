@@ -54,7 +54,17 @@
   let modelViewerReady = null;
   function loadModelViewer() {
     if (!modelViewerReady) {
-      modelViewerReady = import('../assets/vendor/model-viewer.min.js');
+      modelViewerReady = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.type = 'module';
+        // Resolve against the document, not this script's own URL — dynamic
+        // import() bases relative paths on the importing script's location,
+        // which breaks once the site is served from a subpath (GitHub Pages).
+        script.src = new URL('../assets/vendor/model-viewer.min.js', document.baseURI).href;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Failed to load model-viewer'));
+        document.head.appendChild(script);
+      });
     }
     return modelViewerReady;
   }
