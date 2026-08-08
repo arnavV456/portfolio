@@ -133,10 +133,58 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   padding: 7rem clamp(1.25rem, 5vw, 2.5rem) 3rem;
   max-width: var(--container);
   margin: 0 auto;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  width: 100%;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+/* Hero model — real interactive 3D board render */
+.hero-model {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 0.7s var(--ease) 0.3s forwards;
+}
+.hero-model model-viewer {
+  width: 100%;
+  height: clamp(260px, 30vw, 400px);
+  --poster-color: transparent;
+  background-color: transparent;
+}
+.hero-model-caption {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+.hero-model-caption strong {
+  display: block;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+.hero-model-hint {
+  margin-top: 0.15rem;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  opacity: 0.75;
 }
 
 .hero-pill {
@@ -602,6 +650,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-left { align-items: center; text-align: center; }
+  .hero-heading, .hero-sub { max-width: 640px; }
+  .hero-model { order: -1; margin-bottom: 0.5rem; }
+  .hero-model model-viewer { height: min(70vw, 340px); }
+}
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; }
   .contact-wrap { grid-template-columns: 1fr; }

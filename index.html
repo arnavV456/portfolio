@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script type="module" src="assets/vendor/model-viewer.min.js"></script>
 </head>
 <body>
   <nav class="nav">
@@ -42,37 +43,66 @@
 
   <!-- HERO -->
   <header class="hero">
-    <h1 class="hero-heading">
-      Embedded Systems Engineer<br/>
-      <span class="hero-heading-muted">From concept to deployed hardware.</span>
-    </h1>
-    <p class="hero-sub">
-      I design embedded hardware and firmware for robotics, UAVs, industrial electronics and autonomous systems
-    </p>
-    <div class="hero-actions">
-      <a href="#work" class="btn-primary">See my work</a>
-      <a href="#contact" class="btn-secondary">Contact Me</a>
-    </div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1 class="hero-heading">
+          Embedded Systems Engineer<br/>
+          <span class="hero-heading-muted">From concept to deployed hardware.</span>
+        </h1>
+        <p class="hero-sub">
+          I design embedded hardware and firmware for robotics, UAVs, industrial electronics and autonomous systems
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">See my work</a>
+          <a href="#contact" class="btn-secondary">Contact Me</a>
+        </div>
 
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">Robotics & UAVs</span>
-        <span class="stat-label">PX4 • ArduPilot • ROS2</span>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">Robotics & UAVs</span>
+            <span class="stat-label">PX4 • ArduPilot • ROS2</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">PCB Design</span>
+            <span class="stat-label">KiCad • High-Speed • Power Electronics</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">Embedded Firmware</span>
+            <span class="stat-label">STM32 • ESP32 • C/C++</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">Wireless Systems</span>
+            <span class="stat-label">LoRa • MAVLink • Telemetry</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">PCB Design</span>
-        <span class="stat-label">KiCad • High-Speed • Power Electronics</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">Embedded Firmware</span>
-        <span class="stat-label">STM32 • ESP32 • C/C++</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">Wireless Systems</span>
-        <span class="stat-label">LoRa • MAVLink • Telemetry</span>
+
+      <div class="hero-model">
+        <model-viewer
+          src="assets/models/usb-radio-interface/board.glb"
+          alt="Interactive 3D render of the Isolated USB Radio-to-PC Interface PCB, designed by Arnav Verma"
+          camera-controls
+          disable-pan
+          auto-rotate
+          auto-rotate-delay="0"
+          rotation-per-second="16deg"
+          shadow-intensity="0.9"
+          shadow-softness="0.8"
+          exposure="1.1"
+          camera-orbit="35deg 58deg auto"
+          field-of-view="30deg"
+          min-camera-orbit="auto 20deg auto"
+          max-camera-orbit="auto 85deg auto"
+          interaction-prompt="none"
+        ></model-viewer>
+        <p class="hero-model-caption">
+          <strong>Isolated USB Radio-to-PC Interface</strong>
+          ADuM3160 isolation · JLCPCB manufacturing-ready
+        </p>
+        <p class="hero-model-hint">Drag to rotate</p>
       </div>
     </div>
   </header>
