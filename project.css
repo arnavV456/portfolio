@@ -84,6 +84,61 @@
   border: 1px solid var(--border);
   display: block;
 }
+.project-cover model-viewer {
+  width: 100%;
+  height: clamp(320px, 46vw, 520px);
+  display: block;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-tinted);
+  --poster-color: transparent;
+}
+.project-cover-hint {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Cover with lazy-loaded 3D toggle */
+.project-cover--toggle {
+  position: relative;
+}
+.project-3d-toggle {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), opacity 0.15s;
+  cursor: pointer;
+}
+.project-3d-toggle:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+}
+.project-3d-toggle:disabled {
+  opacity: 0.65;
+  cursor: default;
+  transform: translateX(-50%);
+}
+.project-3d-toggle-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
 
 /* ── Body content ─────────────────────────────────────────────── */
 .project-body {

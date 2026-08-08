@@ -46,6 +46,72 @@
   lb.addEventListener('click', () => lb.classList.remove('open'));
 })();
 
+/* Project cover — lazy-load interactive 3D view on demand */
+(function () {
+  const covers = document.querySelectorAll('.project-cover--toggle');
+  if (!covers.length) return;
+
+  let modelViewerReady = null;
+  function loadModelViewer() {
+    if (!modelViewerReady) {
+      modelViewerReady = import('../assets/vendor/model-viewer.min.js');
+    }
+    return modelViewerReady;
+  }
+
+  const LABEL_3D = '<span class="project-3d-toggle-icon">⟳</span> View in 3D';
+  const LABEL_PHOTO = '<span class="project-3d-toggle-icon">⟳</span> View photo';
+
+  covers.forEach(cover => {
+    const btn = cover.querySelector('.project-3d-toggle');
+    const img = cover.querySelector('img');
+    if (!btn || !img) return;
+
+    let mv = null;
+    let hint = null;
+    let showing3D = false;
+
+    btn.addEventListener('click', async () => {
+      if (!mv) {
+        btn.disabled = true;
+        btn.textContent = 'Loading…';
+        await loadModelViewer();
+
+        mv = document.createElement('model-viewer');
+        mv.setAttribute('src', cover.dataset.modelSrc);
+        mv.setAttribute('alt', cover.dataset.modelAlt || '');
+        mv.setAttribute('camera-controls', '');
+        mv.setAttribute('disable-pan', '');
+        mv.setAttribute('auto-rotate', '');
+        mv.setAttribute('auto-rotate-delay', '0');
+        mv.setAttribute('rotation-per-second', '16deg');
+        mv.setAttribute('shadow-intensity', '0.9');
+        mv.setAttribute('shadow-softness', '0.8');
+        mv.setAttribute('exposure', '1.1');
+        mv.setAttribute('camera-orbit', '35deg 58deg auto');
+        mv.setAttribute('field-of-view', '30deg');
+        mv.setAttribute('min-camera-orbit', 'auto 20deg auto');
+        mv.setAttribute('max-camera-orbit', 'auto 85deg auto');
+        mv.setAttribute('interaction-prompt', 'none');
+        img.after(mv);
+
+        hint = document.createElement('p');
+        hint.className = 'project-cover-hint';
+        hint.textContent = 'Drag to rotate · scroll to zoom';
+        cover.after(hint);
+
+        btn.disabled = false;
+      }
+
+      showing3D = !showing3D;
+      img.style.display = showing3D ? 'none' : '';
+      mv.style.display = showing3D ? '' : 'none';
+      hint.style.display = showing3D ? '' : 'none';
+      btn.innerHTML = showing3D ? LABEL_PHOTO : LABEL_3D;
+    });
+  });
+})();
+
 /* Scroll reveal */
 (function () {
   const els = document.querySelectorAll('.project-card, .skill-group, .contact-card, .stat');
