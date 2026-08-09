@@ -60,22 +60,19 @@
         <div class="hero-stats">
           <div class="stat">
             <span class="stat-num">Robotics & UAVs</span>
-            <span class="stat-label">PX4 • ArduPilot • ROS2</span>
+            <span class="stat-label">22-min endurance heavy-lift UAV, autonomous flight</span>
           </div>
-          <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-num">PCB Design</span>
-            <span class="stat-label">KiCad • High-Speed • Power Electronics</span>
+            <span class="stat-label">Isolated PCBs for freelance clients, JLCPCB-ready</span>
           </div>
-          <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-num">Embedded Firmware</span>
-            <span class="stat-label">STM32 • ESP32 • C/C++</span>
+            <span class="stat-label">Custom STM32 / ESP32 flight-controller firmware</span>
           </div>
-          <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-num">Wireless Systems</span>
-            <span class="stat-label">LoRa • MAVLink • Telemetry</span>
+            <span class="stat-label">Custom LoRa FHSS link, zero packet loss</span>
           </div>
         </div>
       </div>
@@ -111,16 +108,26 @@
   <section id="about" class="section">
     <div class="container">
       <div class="about-grid">
-        <div>
+        <div class="about-intro">
           <p class="eyebrow">About</p>
           <h2 class="section-heading">Embedded systems,<br/>from schematic to flight test.</h2>
         </div>
         <div class="about-body">
           <p>
-            I engineer embedded systems that bridge hardware and software. My work spans PCB design, power electronics, embedded firmware, robotics, wireless communication, and autonomous UAV systems, with a focus on building reliable products from concept to deployment.</p>
-          <div class="about-tags">
-            <span>PX4</span><span>ArduPilot</span><span>ROS 2</span><span>MAVLink</span><span>Embedded C</span><span>STM32</span><span>Jetson</span><span>Raspberry Pi</span><span>KiCad</span>
-            <span>SDR</span><span>Linux</span>
+            I engineer embedded systems that bridge hardware and software. My work spans <strong>PCB design</strong>, power electronics, <strong>embedded firmware</strong>, robotics, wireless communication, and <strong>autonomous UAV systems</strong>, with a focus on building reliable products from concept to deployment.</p>
+          <div class="about-stack">
+            <div class="stack-group">
+              <span class="stack-label">Flight &amp; Robotics</span>
+              <div class="stack-tags"><span>PX4</span><span>ArduPilot</span><span>ROS 2</span><span>MAVLink</span></div>
+            </div>
+            <div class="stack-group">
+              <span class="stack-label">Hardware &amp; Firmware</span>
+              <div class="stack-tags"><span>STM32</span><span>Embedded C</span><span>KiCad</span><span>SDR</span></div>
+            </div>
+            <div class="stack-group">
+              <span class="stack-label">Platforms</span>
+              <div class="stack-tags"><span>Jetson</span><span>Raspberry Pi</span><span>Linux</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -322,40 +329,50 @@
           <h4>Systems & Flight</h4>
           <ul>
             <li>ArduPilot / PX4</li>
-            <li>MAVLink / MAVSDK</li>
+            <li>MAVLink / MAVSDK / DroneKit</li>
             <li>ROS 2</li>
-            <li>DroneCAN / CAN bus</li>
             <li>Gazebo SITL</li>
+            <li>QGroundControl / Mission Planner</li>
           </ul>
         </div>
         <div class="skill-group">
           <h4>Embedded & Hardware</h4>
           <ul>
-            <li>STM32 / ESP32</li>
-            <li>KiCad PCB Designing</li>
-            <li>Jetson Orin Nano</li>
-            <li>Raspberry Pi 5</li>
-             <li>PlatformIO</li>
+            <li>STM32 / ESP32 / Arduino</li>
+            <li>C / C++ / Python</li>
+            <li>UART · SPI · I2C · CAN · RS485</li>
+            <li>KiCad PCB Design</li>
+            <li>PlatformIO</li>
           </ul>
         </div>
         <div class="skill-group">
           <h4>RF & Communications</h4>
           <ul>
-            <li>mLRS / ELRS / LoRa</li>
-            <li>HackRF One / GNU Radio</li>
-            <li>Freqency Hopping Spread Spectrum</li>
-            <li>Software Defined Radio</li>
-            <li>Long Range Telemetry</li>
+            <li>Custom LoRa FHSS (ESP32 + SX1278)</li>
+            <li>HackRF One / GNU Radio / GQRX</li>
+            <li>Adalm Pluto SDR</li>
+            <li>Wi-Fi / Bluetooth</li>
+            <li>Long-Range Telemetry</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h4>Perception & Intelligence</h4>
+          <h4>Lab & Bring-up</h4>
           <ul>
-            <li>Computer Vision</li>
-            <li>Visual Navigation</li>
-            <li>GPS-Denied Operations</li>
-            <li>Multi-Agent Systems</li>
-            <li>CUDA</li>
+            <li>Oscilloscope (DSO / MSO)</li>
+            <li>Function Generator</li>
+            <li>DC Power Supplies</li>
+            <li>Multimeter</li>
+            <li>Board-Level Debug</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Companion Computers & Autonomy</h4>
+          <ul>
+            <li>Raspberry Pi 4 / 5</li>
+            <li>Jetson Nano</li>
+            <li>Linux / Shell Scripting</li>
+            <li>OpenCV / ML Inference</li>
+            <li>KML-Driven Mission Planning</li>
           </ul>
         </div>
       </div>
@@ -381,17 +398,17 @@
         </a>
         <a href="https://www.linkedin.com/in/arnav-verma-826028280/" target="_blank" class="contact-card">
           <div class="contact-card-label">LinkedIn</div>
-          <div class="contact-card-val">https://www.linkedin.com/in/arnav-verma-826028280/</div>
+          <div class="contact-card-val">arnav-verma-826028280</div>
           <span class="contact-arrow">↗</span>
         </a>
         <a href="https://github.com/arnavV456" target="_blank" class="contact-card">
           <div class="contact-card-label">GitHub</div>
-          <div class="contact-card-val">https://github.com/arnavV456</div>
+          <div class="contact-card-val">arnavV456</div>
           <span class="contact-arrow">↗</span>
         </a>
         <a href="https://www.upwork.com/freelancers/~01e00dc58939ea215e?mp_source=share" target="_blank" class="contact-card">
           <div class="contact-card-label">Upwork</div>
-          <div class="contact-card-val">https://www.upwork.com/freelancers/~01e00dc58939ea215e?mp_source=share</div>
+          <div class="contact-card-val">View freelance profile</div>
           <span class="contact-arrow">↗</span>
         </a>
       </div>
