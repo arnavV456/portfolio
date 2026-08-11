@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>6S UAV Power Distribution Board — Arnav Verma</title>
-  <meta name="description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and ESC power sized to IPC-2152 standards." />
+  <meta name="description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and a raw ESC power bus sized for 80A combined trunk current." />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://arnavv456.github.io/portfolio/projects/6s-uav-pdb.html" />
   <meta property="og:title" content="6S UAV Power Distribution Board — Arnav Verma" />
-  <meta property="og:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and ESC power sized to IPC-2152 standards." />
+  <meta property="og:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and a raw ESC power bus sized for 80A combined trunk current." />
   <meta property="og:image" content="https://arnavv456.github.io/portfolio/assets/img/6s-uav-pdb/pcb-render.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="6S UAV Power Distribution Board — Arnav Verma" />
-  <meta name="twitter:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and ESC power sized to IPC-2152 standards." />
+  <meta name="twitter:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and a raw ESC power bus sized for 80A combined trunk current." />
   <meta name="twitter:image" content="https://arnavv456.github.io/portfolio/assets/img/6s-uav-pdb/pcb-render.png" />
 
   <link rel="stylesheet" href="../style.css" />
@@ -38,8 +38,8 @@
     <h1 class="project-title">6S UAV Power Distribution Board</h1>
     <p class="project-tagline">
       A 6S UAV power distribution board with reverse-polarity and transient
-      protection, dual independently regulated 5A rails, and raw ESC power
-      distribution sized to IPC-2152 standards.
+      protection, dual independently regulated 5A rails, and a raw ESC power
+      bus sized for 80A combined trunk current.
     </p>
 
     <div class="project-meta">
@@ -76,10 +76,7 @@
     <p>
       Designed a 6S power distribution board for a UAV, splitting power into
       three paths: a protected and regulated stage for onboard compute and
-      servos, and a raw, high-current stage feeding the ESCs directly. The
-      protection and regulation architecture was validated against two
-      reverse-engineered commercial reference PDBs before finalizing the
-      design.
+      servos, and a raw, high-current stage feeding the ESCs directly.
     </p>
 
     <h2>Input Protection</h2>
@@ -119,13 +116,13 @@
 
     <h2>ESC / Motor Power Distribution</h2>
     <ul>
-      <li>Raw, unregulated battery bus feeding four ESC connectors — deliberately unprotected on this branch, matching verified industry practice (validated by reverse-engineering two commercial reference PDBs before committing to the architecture)</li>
+      <li>Raw, unregulated battery bus feeding four ESC connectors — deliberately unprotected on this branch, matching common industry practice</li>
       <li>Sized for 80A combined trunk current, 20A per motor branch</li>
-      <li>High-current pad footprints and 2oz outer-layer copper, dimensioned using IPC-2152 current-carrying capacity standards</li>
+      <li>High-current pad footprints and 2oz outer-layer copper, hand-sized against buck-converter and connector current-carrying references for the 80A trunk load</li>
     </ul>
 
     <div class="card-tech">
-      <span>TPS5450</span><span>RD3L01BATTL1</span><span>KiCad</span><span>IPC-2152</span><span>Power Electronics</span>
+      <span>TPS5450</span><span>RD3L01BATTL1</span><span>KiCad</span><span>High-Current PCB</span><span>Power Electronics</span>
     </div>
   </div>
 

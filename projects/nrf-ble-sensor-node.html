@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nRF52840 BLE Sensor Node — Arnav Verma</title>
+  <meta name="description" content="A compact 30×35mm BLE sensor node built around the nRF52840, with USB-C Li-ion charging and power-path management, onboard microSD data logging, and a hand-routed 50Ω PCB antenna feed." />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://arnavv456.github.io/portfolio/projects/nrf-ble-sensor-node.html" />
+  <meta property="og:title" content="nRF52840 BLE Sensor Node — Arnav Verma" />
+  <meta property="og:description" content="A compact 30×35mm BLE sensor node built around the nRF52840, with USB-C Li-ion charging and power-path management, onboard microSD data logging, and a hand-routed 50Ω PCB antenna feed." />
+  <meta property="og:image" content="https://arnavv456.github.io/portfolio/assets/img/nrf-ble-sensor-node/pcb-render.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="nRF52840 BLE Sensor Node — Arnav Verma" />
+  <meta name="twitter:description" content="A compact 30×35mm BLE sensor node built around the nRF52840, with USB-C Li-ion charging and power-path management, onboard microSD data logging, and a hand-routed 50Ω PCB antenna feed." />
+  <meta name="twitter:image" content="https://arnavv456.github.io/portfolio/assets/img/nrf-ble-sensor-node/pcb-render.png" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html#work" class="back-link">← Back to work</a>
+  </nav>
+
+  <header class="project-header">
+    <div class="project-badges">
+      <span class="badge badge-accent">Flagship</span>
+      <span class="badge badge-green">PCB Design</span>
+      <span class="badge badge-blue">Embedded</span>
+    </div>
+    <h1 class="project-title">nRF52840 BLE Sensor Node</h1>
+    <p class="project-tagline">
+      A compact 30×35mm Bluetooth Low Energy sensor node built around the
+      nRF52840, with USB-C Li-ion charging and power-path management,
+      onboard microSD data logging, and a hand-routed 50Ω PCB antenna feed —
+      designed from the datasheet up and taken through clean ERC/DRC.
+    </p>
+
+    <div class="project-meta">
+      <div class="stat">
+        <span class="stat-num">nRF52840</span>
+        <span class="stat-label">BLE 5.x SoC</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">MCP73871</span>
+        <span class="stat-label">USB-C charge + power-path</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">30×35mm</span>
+        <span class="stat-label">Four-layer PCB</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-cover project-cover--toggle" data-model-src="../assets/models/nrf-ble-sensor-node/board.glb" data-model-alt="Interactive 3D render of the nRF52840 BLE Sensor Node PCB">
+    <img src="../assets/img/nrf-ble-sensor-node/pcb-render.png" alt="nRF52840 BLE Sensor Node board 3D render" />
+    <button class="project-3d-toggle" type="button">
+      <span class="project-3d-toggle-icon">⟳</span> View in 3D
+    </button>
+  </div>
+
+  <div class="project-body">
+    <h2>Overview</h2>
+    <p>
+      Designed a 30×35mm BLE sensor node around the nRF52840 QFN, built for
+      battery-powered field logging: USB-C in, Li-ion charging and power-path
+      management on the way through, a regulated 3.3V rail, onboard microSD
+      storage, and a matched PCB antenna feed. The board was built up
+      pin-by-pin from the MCP73871 and TPS7A20 datasheets rather than copied
+      from a reference layout, then routed, silkscreened, and verified
+      through clean ERC and DRC.
+    </p>
+
+    <div class="card-tech">
+      <span>nRF52840</span><span>MCP73871</span><span>TPS7A20</span><span>KiCad</span><span>BLE</span>
+    </div>
+
+    <h2>Functional Overview</h2>
+
+    <h3>Power System</h3>
+    <ul>
+      <li>USB-C VBUS feeds the MCP73871 linear charge management IC, which manages Li-ion charging and system power-path simultaneously</li>
+      <li>System load is always sourced from the MCP73871's regulated SYS output, never directly from the battery, so brownout during heavy charge current is avoided</li>
+      <li>Charge current set via PROG1 (~500mA) and termination current via PROG3, with the safety timer left enabled</li>
+      <li>CE tied to VBUS so the charger is only enabled while USB power is present; PG/STAT1/STAT2 status outputs drive onboard LEDs</li>
+      <li>JST battery connector with input, output, and battery bulk capacitance placed per the datasheet's typical application circuit</li>
+    </ul>
+
+    <h3>3.3V Regulation</h3>
+    <ul>
+      <li>TPS7A20 LDO regulates the SYS rail down to a clean 3.3V for the MCU and sensors</li>
+      <li>Selected for its 6.5µA quiescent current and 1.6–6.0V input range, both well suited to a battery-backed, low-duty-cycle sensor node</li>
+      <li>Minimal footprint: single 1µF input and output ceramic capacitor, per datasheet</li>
+    </ul>
+
+    <h3>MCU &amp; RF</h3>
+    <ul>
+      <li>nRF52840 QFN as the BLE radio and application core</li>
+      <li>Hand-routed 50Ω controlled-impedance feed from the chip to the antenna, with trace geometry calculated for the board's stackup</li>
+      <li>Careful escape routing off the QFN's fine-pitch pads, including matched RF and ground return routing back through stitched vias to the L2 ground pour</li>
+    </ul>
+
+    <h3>Data Logging</h3>
+    <ul>
+      <li>Onboard microSD card slot for local sensor data logging independent of the BLE link</li>
+    </ul>
+
+    <h3>User Interface &amp; Debug</h3>
+    <ul>
+      <li>10-pin SWD debug header for programming and in-circuit debugging</li>
+      <li>User and reset tactile buttons</li>
+      <li>RGB status LED</li>
+    </ul>
+
+    <h2>PCB Design Highlights</h2>
+    <ul>
+      <li>Compact four-layer, 30×35mm layout with a dense mixed-signal component placement (charger, LDO, MCU, RF, and microSD on one board)</li>
+      <li>Controlled-impedance 50Ω antenna trace tuned to the four-layer copper stackup</li>
+      <li>Solid L2 ground plane stitched to the top-layer ground pour with return-path vias placed for RF and digital return continuity</li>
+      <li>Custom silkscreen branding and labeled interfaces (USB, SWD, µSD, BAT, buttons, LEDs) for a clean, product-like finish</li>
+      <li>Clean ERC and DRC verification prior to fabrication</li>
+    </ul>
+
+    <h2>Design Tools</h2>
+    <div class="card-tech">
+      <span>nRF52840</span><span>MCP73871</span><span>TPS7A20</span><span>KiCad</span><span>BLE</span>
+    </div>
+  </div>
+
+  <div class="project-pagination">
+    <a href="usb-radio-interface.html" class="pagination-link prev">
+      <span class="pagination-label">← Previous</span>
+      <span class="pagination-title">Isolated USB Radio-to-PC Interface</span>
+    </a>
+    <a href="esp32-flight-controller.html" class="pagination-link next">
+      <span class="pagination-label">Next →</span>
+      <span class="pagination-title">ESP32 Brushed Quadcopter Flight Controller</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Arnav Verma</span>
+    <span>Built from scratch</span>
+  </footer>
+
+  <div class="lightbox"><img src="" alt="" /></div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
