@@ -181,6 +181,41 @@
 }
 .project-body strong { color: var(--text); font-weight: 500; }
 .project-body .card-tech { padding-top: 0.5rem; border-top: none; margin-bottom: 1.5rem; }
+.project-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 1.6rem 0 0.6rem;
+}
+
+/* ── Spec / decision tables ───────────────────────────────────── */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+.spec-table td, .spec-table th {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.spec-table th {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.spec-table td:first-child, .spec-table th:first-child {
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.spec-table tr:last-child td { border-bottom: none; }
 
 /* ── Image gallery ─────────────────────────────────────────────── */
 .project-gallery {
