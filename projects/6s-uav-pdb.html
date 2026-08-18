@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6S UAV Power Distribution Board — Arnav Verma</title>
+  <title>6S UAV Power Distribution Board - Arnav Verma</title>
   <meta name="description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and a raw ESC power bus sized for 80A combined trunk current." />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://arnavv456.github.io/portfolio/projects/6s-uav-pdb.html" />
-  <meta property="og:title" content="6S UAV Power Distribution Board — Arnav Verma" />
+  <meta property="og:title" content="6S UAV Power Distribution Board - Arnav Verma" />
   <meta property="og:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and a raw ESC power bus sized for 80A combined trunk current." />
   <meta property="og:image" content="https://arnavv456.github.io/portfolio/assets/img/6s-uav-pdb/pcb-render.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="6S UAV Power Distribution Board — Arnav Verma" />
+  <meta name="twitter:title" content="6S UAV Power Distribution Board - Arnav Verma" />
   <meta name="twitter:description" content="A 6S UAV power distribution board with reverse-polarity and transient protection, dual regulated 5A rails, and a raw ESC power bus sized for 80A combined trunk current." />
   <meta name="twitter:image" content="https://arnavv456.github.io/portfolio/assets/img/6s-uav-pdb/pcb-render.png" />
 
@@ -69,7 +69,7 @@
 
   <div class="project-body">
     <p style="font-size:0.85rem; color:var(--text-muted); border-left: 2px solid var(--border); padding-left: 0.85rem; margin-bottom: 2rem;">
-      Currently at the design stage — schematic and PCB layout complete, not yet fabricated.
+      Currently at the design stage - schematic and PCB layout complete, not yet fabricated.
     </p>
 
     <h2>Overview</h2>
@@ -86,7 +86,7 @@
     </ul>
     <h3>Gate Protection Network</h3>
     <ul>
-      <li>10kΩ pull-down resistor + SMBJ5352B 15V Zener clamp — added after identifying that a bare pull-down would drive the gate beyond its rated VGS at full 6S charge voltage</li>
+      <li>10kΩ pull-down resistor + SMBJ5352B 15V Zener clamp - added after identifying that a bare pull-down would drive the gate beyond its rated VGS at full 6S charge voltage</li>
     </ul>
     <h3>Overcurrent Protection</h3>
     <ul>
@@ -103,20 +103,20 @@
       (36V, 5A, non-synchronous buck, PowerPAD SOIC-8):
     </p>
     <ul>
-      <li>Rail 1 — Fixed 5V/5A: dedicated to onboard companion compute (RDK X3)</li>
-      <li>Rail 2 — Solder-jumper selectable 5V / 7.4V / 12V: feeds the servo bus (payload release + gimbal), with the output set via a 3-position solder-jumper feedback divider so the exact voltage can be chosen at assembly time without a schematic change</li>
+      <li>Rail 1 - Fixed 5V/5A: dedicated to onboard companion compute (RDK X3)</li>
+      <li>Rail 2 - Solder-jumper selectable 5V / 7.4V / 12V: feeds the servo bus (payload release + gimbal), with the output set via a 3-position solder-jumper feedback divider so the exact voltage can be chosen at assembly time without a schematic change</li>
     </ul>
     <p>Shared design details across both rails:</p>
     <ul>
       <li>Inductor and output capacitor values recalculated from the TPS5450's own datasheet design equations for the board's real 6S operating voltage, not copied from the datasheet's 12V worked example</li>
       <li>Catch diode: PDS540-13 (Diodes Inc., 40V/5A Schottky)</li>
       <li>Inductor: Panasonic ETQP5M330YFC (32.5µH, 7.6A Isat, AEC-Q200 automotive-qualified, low-buzz metal composite core for vibration resistance)</li>
-      <li>Both rails draw from the protected bus downstream of the reverse-polarity/fuse/TVS stage — never directly off raw battery voltage</li>
+      <li>Both rails draw from the protected bus downstream of the reverse-polarity/fuse/TVS stage - never directly off raw battery voltage</li>
     </ul>
 
     <h2>ESC / Motor Power Distribution</h2>
     <ul>
-      <li>Raw, unregulated battery bus feeding four ESC connectors — deliberately unprotected on this branch, matching common industry practice</li>
+      <li>Raw, unregulated battery bus feeding four ESC connectors - deliberately unprotected on this branch, matching common industry practice</li>
       <li>Sized for 80A combined trunk current, 20A per motor branch</li>
       <li>High-current pad footprints and 2oz outer-layer copper, hand-sized against buck-converter and connector current-carrying references for the 80A trunk load</li>
     </ul>

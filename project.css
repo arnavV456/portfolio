@@ -1,6 +1,6 @@
 /* ================================================================
    PROJECT DETAIL PAGES
-   Loaded *after* style.css — reuses all :root tokens from there.
+   Loaded *after* style.css - reuses all :root tokens from there.
 ================================================================ */
 
 /* ── Sub-nav back link ────────────────────────────────────────── */
@@ -54,7 +54,7 @@
   margin-bottom: 2rem;
 }
 
-/* Meta strip: year / role / links — reuses hero-stats look */
+/* Meta strip: year / role / links - reuses hero-stats look */
 .project-meta {
   display: flex;
   flex-wrap: wrap;

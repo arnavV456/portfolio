@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INA228 Precision Power Monitor — Arnav Verma</title>
+  <title>INA228 Precision Power Monitor - Arnav Verma</title>
   <meta name="description" content="A standalone in-line power measurement module built around the TI INA228 that sits between a UAV's battery and its power distribution board, measuring real current, voltage, power, and accumulated energy in flight." />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://arnavv456.github.io/portfolio/projects/ina228-power-monitor.html" />
-  <meta property="og:title" content="INA228 Precision Power Monitor — Arnav Verma" />
+  <meta property="og:title" content="INA228 Precision Power Monitor - Arnav Verma" />
   <meta property="og:description" content="A standalone in-line power measurement module built around the TI INA228 that sits between a UAV's battery and its power distribution board, measuring real current, voltage, power, and accumulated energy in flight." />
   <meta property="og:image" content="https://arnavv456.github.io/portfolio/assets/img/ina228-power-monitor/pcb-render.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="INA228 Precision Power Monitor — Arnav Verma" />
+  <meta name="twitter:title" content="INA228 Precision Power Monitor - Arnav Verma" />
   <meta name="twitter:description" content="A standalone in-line power measurement module built around the TI INA228 that sits between a UAV's battery and its power distribution board, measuring real current, voltage, power, and accumulated energy in flight." />
   <meta name="twitter:image" content="https://arnavv456.github.io/portfolio/assets/img/ina228-power-monitor/pcb-render.png" />
 
@@ -34,11 +34,11 @@
       <span class="badge badge-green">PCB Design</span>
       <span class="badge badge-blue">Power Electronics</span>
     </div>
-    <h1 class="project-title">INA228 Precision Power Monitor — V1</h1>
+    <h1 class="project-title">INA228 Precision Power Monitor - V1</h1>
     <p class="project-tagline">
       A standalone in-line power measurement module that sits between a
       UAV's battery and its power distribution board, measuring real
-      current, voltage, power, and accumulated energy in flight — built to
+      current, voltage, power, and accumulated energy in flight - built to
       turn a spec-sheet endurance number into measured flight data.
     </p>
 
@@ -68,14 +68,14 @@
     <h2>Overview</h2>
     <p>
       The <a href="disaster-response-uav.html">disaster-response UAV</a>
-      claims 22-minute endurance and a 5kg payload — currently a spec sheet
+      claims 22-minute endurance and a 5kg payload - currently a spec sheet
       number, not a measured one. This board is an in-line power monitor
       that sits directly between the battery and the power distribution
       board, using a TI INA228 to measure real current, voltage, power, and
       accumulated energy during flight, so that claim can be validated
       against real flight data instead of taken on faith. It's also a
       deliberate exercise in precision analog measurement, high-side current
-      sensing, and lab-grade validation — the kind of work that sits behind
+      sensing, and lab-grade validation - the kind of work that sits behind
       most analog and power IC roles.
     </p>
 
@@ -87,15 +87,15 @@
 
     <h3>Sensing Architecture</h3>
     <ul>
-      <li>TI INA228: a 24-bit high-side current/voltage/power monitor with a hardware energy and charge accumulator — real coulomb counting on-chip, not software integration of sampled current</li>
+      <li>TI INA228: a 24-bit high-side current/voltage/power monitor with a hardware energy and charge accumulator - real coulomb counting on-chip, not software integration of sampled current</li>
       <li>High-side topology: the shunt sits directly in the battery's positive line, with the differential sense path branching off it carrying essentially zero current</li>
-      <li>I²C interface to an external MCU. V1 talks to a Nucleo F441 over jumper wires — there's no onboard MCU, which keeps the new engineering risk isolated to the analog front end</li>
+      <li>I²C interface to an external MCU. V1 talks to a Nucleo F441 over jumper wires - there's no onboard MCU, which keeps the new engineering risk isolated to the analog front end</li>
     </ul>
 
     <h3>Shunt &amp; ADC Range Sizing</h3>
     <ul>
-      <li>Shunt: ASR-K-7-1G, 1mΩ, 9W, ±2%, ±50ppm/°C, 5930 case — 80mV at 80A, about 49% of full scale, leaving headroom for current spikes</li>
-      <li>ADCRANGE = 0 (±163.84mV full scale) — ADCRANGE = 1 would clip at roughly 41A, well under the peak this board needs to capture</li>
+      <li>Shunt: ASR-K-7-1G, 1mΩ, 9W, ±2%, ±50ppm/°C, 5930 case - 80mV at 80A, about 49% of full scale, leaving headroom for current spikes</li>
+      <li>ADCRANGE = 0 (±163.84mV full scale) - ADCRANGE = 1 would clip at roughly 41A, well under the peak this board needs to capture</li>
       <li>CURRENT_LSB ≈ 152.6µA/bit, derived as 80A / 2¹⁹, with SHUNT_CAL ≈ 2000 (13107.2×10⁶ × CURRENT_LSB × R_shunt)</li>
       <li>80A and 40–50A are answers to two different questions: 80A is a 1–2 second peak, so the shunt value and ADC range are sized against it to avoid clipping; the copper pour is sized against the lower sustained thermal load instead</li>
     </ul>
@@ -104,15 +104,8 @@
     <ul>
       <li>10Ω + 10Ω + 1µF differential input filter ahead of the INA228's sense pins, giving roughly an 8kHz cutoff that rejects ESC switching noise</li>
       <li>Power pour sized 24mm wide in 2oz copper against a 70A rating, well above the real sustained load of 40–50A</li>
-      <li>Kelvin sensing: R2 is a 2-terminal part, so sense quality is entirely a layout problem — sense traces tap at the very edge of R2's pads, symmetric, equal length, 0.25mm, and routed clear of the power pour</li>
+      <li>Kelvin sensing: R2 is a 2-terminal part, so sense quality is entirely a layout problem - sense traces tap at the very edge of R2's pads, symmetric, equal length, 0.25mm, and routed clear of the power pour</li>
       <li>Single continuous GND pour on both layers, stitched with vias; the INA228's local reference sits away from the main battery-in-to-PDB-out return current corridor</li>
-    </ul>
-
-    <h3>Interface &amp; Connectors</h3>
-    <ul>
-      <li>XT90 connectors — J1 (female, battery in) and J3 (male, PDB out) — rated for ~90A continuous, well above the sustained load</li>
-      <li>5-pin header (J2) breaking out VCC, SCL, SDA, and ALERT_N to the external MCU</li>
-      <li>Address-select and ALERT_N pull-up resistor network per the INA228 datasheet's typical application circuit</li>
     </ul>
 
     <h2>Key Design Decisions</h2>
@@ -127,7 +120,7 @@
         <tr><td>SHUNT_CAL</td><td>~2000</td><td>13107.2×10⁶ × CURRENT_LSB × R_shunt</td></tr>
         <tr><td>Input filter</td><td>10Ω + 10Ω + 1µF differential</td><td>~8kHz cutoff, kills ESC switching noise</td></tr>
         <tr><td>Power pour</td><td>24mm wide, 2oz copper</td><td>Sized against 70A; real sustained load likely 40–50A</td></tr>
-        <tr><td>Connectors</td><td>XT90 — J1 female (in), J3 male (out)</td><td>~90A continuous, well above sustained load</td></tr>
+        <tr><td>Connectors</td><td>XT90 - J1 female (in), J3 male (out)</td><td>~90A continuous, well above sustained load</td></tr>
       </tbody>
     </table>
 

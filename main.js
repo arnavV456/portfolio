@@ -46,7 +46,7 @@
   lb.addEventListener('click', () => lb.classList.remove('open'));
 })();
 
-/* Project cover — lazy-load interactive 3D view on demand */
+/* Project cover - lazy-load interactive 3D view on demand */
 (function () {
   const covers = document.querySelectorAll('.project-cover--toggle');
   if (!covers.length) return;
@@ -57,7 +57,7 @@
       modelViewerReady = new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.type = 'module';
-        // Resolve against the document, not this script's own URL — dynamic
+        // Resolve against the document, not this script's own URL - dynamic
         // import() bases relative paths on the importing script's location,
         // which breaks once the site is served from a subpath (GitHub Pages).
         script.src = new URL('../assets/vendor/model-viewer.min.js', document.baseURI).href;
