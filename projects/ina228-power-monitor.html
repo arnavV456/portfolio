@@ -103,7 +103,7 @@
     <h3>Signal Filtering &amp; Layout</h3>
     <ul>
       <li>10Ω + 10Ω + 1µF differential input filter ahead of the INA228's sense pins, giving roughly an 8kHz cutoff that rejects ESC switching noise</li>
-      <li>Power pour sized 24mm wide in 2oz copper against a 70A rating, well above the real sustained load of 40–50A</li>
+      <li>Power pour sized 24mm wide in 2oz copper against a 75A rating, well above the real sustained load of 40–50A</li>
       <li>Kelvin sensing: R2 is a 2-terminal part, so sense quality is entirely a layout problem - sense traces tap at the very edge of R2's pads, symmetric, equal length, 0.25mm, and routed clear of the power pour</li>
       <li>Single continuous GND pour on both layers, stitched with vias; the INA228's local reference sits away from the main battery-in-to-PDB-out return current corridor</li>
     </ul>
@@ -119,7 +119,7 @@
         <tr><td>CURRENT_LSB</td><td>~152.6µA/bit</td><td>80A / 2¹⁹</td></tr>
         <tr><td>SHUNT_CAL</td><td>~2000</td><td>13107.2×10⁶ × CURRENT_LSB × R_shunt</td></tr>
         <tr><td>Input filter</td><td>10Ω + 10Ω + 1µF differential</td><td>~8kHz cutoff, kills ESC switching noise</td></tr>
-        <tr><td>Power pour</td><td>24mm wide, 2oz copper</td><td>Sized against 70A; real sustained load likely 40–50A</td></tr>
+        <tr><td>Power pour</td><td>24mm wide, 2oz copper</td><td>Sized against 75A; real sustained load likely 40–50A</td></tr>
         <tr><td>Connectors</td><td>XT90 - J1 female (in), J3 male (out)</td><td>~90A continuous, well above sustained load</td></tr>
       </tbody>
     </table>
